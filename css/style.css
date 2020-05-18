@@ -6,6 +6,10 @@
   font-family: VacerBold;
   src: url(../fonts/VacerSansBoldPersonal.ttf);
 }
+@font-face{
+  font-family: VacerStandard;
+  src: url(../fonts/VacerSansLightPersonal.ttf);
+}
 .vacer-text{
   font-family: VacerBold;
   font-size: 28px;
@@ -15,10 +19,10 @@
   font-family: PointedlyMad;
 }
 :root{
-  --primary:#69c3ef;
-  --accentRed:#f53b48;
-  --accentOrange:#e9a750;
-  --accentYellow:#858963;
+  --primary:#13cfec;
+  --accentRed:#EC3013;
+  --accentOrange:#EC9D13;
+  --accentYellow:#CFEC13;
   --blackMain:#000;
   --whiteMain:#eee;
 }
@@ -95,8 +99,51 @@ header{
   font-family: PointedlyMad;
   font-size: 44px;
 }
+#ctas{
+  float: right;
+  text-align:center;
+  margin: 22px 18px;
+}
+.btn{
+  border-radius:3px;
+  font-size:26px;
+  color:#eee;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-family: VacerBold;
+}
+.btn-changing{
+  text-shadow: -1px -1px #000;
+  background-color: var(--accentRed);
+  animation: 7s orangeToYellow;
+  animation-iteration-count: infinite;
+}
+@keyframes orangeToYellow{
+  0%{background-color: var(--accentRed);}
+  50%{background-color: var(--accentOrange);}
+  100%{background-color: var(--accentRed);}
+}
+.btn-blue{
+  background-color: var(--primary);
+}
+.btn-red{
+  background-color: var(--accentRed);
+}
 main{
   position: relative;
+}
+.main-text{
+  padding: 16px;
+}
+h1{
+  text-align:center;
+  font-size: 36px;
+  font-family: VacerBold;
+}
+p{
+  font-size:26px;
+  line-height:32px;
+  font-family:VacerStandard;
 }
 footer{
   position: relative;
