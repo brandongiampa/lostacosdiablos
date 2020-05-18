@@ -22,17 +22,9 @@
       <div id="menu-expand">
         <i class="fas fa-bars"></i>
       </div>
-      <nav id="nav-header-mobile">
-        <div id="close-nav-header-mobile">
-          <i class="fas fa-times"></i>
-        </div>
-        <ul>
-          <li>Our Story</li>
-          <li>News</li>
-          <li>Menu</li>
-          <li>Find Us</li>
-        </ul>
-      </nav>
+      <div id="ctas">
+        <a href="#" class="btn btn-red">ORDER NOW</a>
+      </div>
       <nav id="nav-header-pc" style="visibility: hidden; position: absolute; height: 0;">
         <ul>
           <li>Our Story</li>
@@ -47,11 +39,11 @@
         </ul>
       </nav>
     </header>
-    <div id="ctas-mobile">
-      <div id="cta-grubhub-mobile" class="cta-mobile">
-        <a href="https://grubhub.com">Order on GrubHub</a>
-      </div>
-      <div id="cta-postmates-mobile" class="cta-mobile">
-        <a href="https://postmates.com">Order on Postmates</a>
-      </div>
-    </div>
+    <nav id="nav-header-mobile">
+      <ul>
+        <li>Our Story</li>
+        <li>News</li>
+        <li>Menu</li>
+        <li>Find Us</li>
+      </ul>
+    </nav>
