@@ -1,0 +1,118 @@
+@font-face{
+  font-family: PointedlyMad;
+  src: url(../fonts/PointedlyMad.ttf);
+}
+@font-face{
+  font-family: VacerBold;
+  src: url(../fonts/VacerSansBoldPersonal.ttf);
+}
+.vacer-text{
+  font-family: VacerBold;
+  font-size: 28px;
+}
+.pointed-text{
+  font-size:40px;
+  font-family: PointedlyMad;
+}
+:root{
+  --primary:#69c3ef;
+  --accentRed:#f53b48;
+  --accentOrange:#e9a750;
+  --accentYellow:#858963;
+  --blackMain:#000;
+  --whiteMain:#eee;
+}
+html, body {
+  padding:0;
+  margin:0;
+  background-color: #000;
+  color: var(--whiteMain);
+}
+#page{
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #000;
+}
+header{
+  background-color: inherit;
+  z-index:2;
+  position:relative;
+  height: 80px;
+  padding-top:16px;
+  padding-bottom:16px;
+  border-bottom: 1px var(--primary) solid;
+}
+#branding-mobile{
+  margin-left:16px;
+  height: 100%;
+  float: left;
+}
+#branding-mobile img{
+  max-height: 100%;
+}
+#menu-expand{
+  float: right;
+  margin-top: 16px;
+  margin-right:16px;
+}
+#menu-expand i {
+  color: #eee;
+  font-size: 40px;
+}
+#nav-header-mobile{
+  border-bottom: 1px var(--primary) solid;
+  z-index:1;
+  position:absolute;
+  top:112px;
+  width:100%;
+  transition: .3s all;
+  background-color:#000;
+  transform:translateY(-100%);
+}
+#close-nav-header-mobile{
+  text-align: right;
+  font-size: 28px;
+  margin: 16px;
+}
+#nav-header-mobile ul{
+  margin: 0;
+  padding: 0;
+  border-top: 1px #bbb solid;
+}
+#nav-header-mobile li{
+  list-style:none;
+  text-align: center;
+  font-family: VacerBold;
+  font-size: 26px;
+  text-transform:uppercase;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px #eee solid;
+}
+#nav-header-mobile li:first-letter{
+  font-family: PointedlyMad;
+  font-size: 44px;
+}
+
+img{
+  max-width: 100%;
+}
+@media screen and (min-width:1200px){
+  #bg{
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-image:url(../img/background/bg1920-blur1.jpg);
+  }
+  #bg-opaque{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: #000;
+    opacity: .5;
+  }
+}
