@@ -27,23 +27,39 @@
       </div>
       <nav id="nav-header-pc" style="visibility: hidden; position: absolute; height: 0;">
         <ul>
-          <li>Our Story</li>
-          <li>News</li>
+          <li>
+            <a href="our-story.php">Our Story</a>
+          </li>
+          <li>
+            <a href="news.php">News</a>
+          </li>
           <li>
             <a href="<?php echo $_SERVER['PHP_SELF'];?>">
               <img src="img/logo/logocropped.jpg" alt="">
             </a>
           </li>
-          <li>Menu</li>
-          <li>Find Us</li>
+          <li>
+            <a href="menu.php">Menu</a>
+          </li>
+          <li>
+            <a href="find-us.php">Find Us</a>
+          </li>
         </ul>
       </nav>
     </header>
     <nav id="nav-header-mobile">
       <ul>
-        <li>Our Story</li>
-        <li>News</li>
-        <li>Menu</li>
-        <li>Find Us</li>
+        <li>
+          <a href="our-story.php">Our Story</a>
+        </li>
+        <li>
+          <a href="news.php">News</a>
+        </li>
+        <li>
+          <a href="menu.php">Menu</a>
+        </li>
+        <li>
+          <a href="find-us.php">Find Us</a>
+        </li>
       </ul>
     </nav>

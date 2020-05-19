@@ -9,9 +9,10 @@ if (
 var mobileMenuIsOpen=false
 
 function onLoad(){
-  fontify("#nav-header-pc ul li")
-  fontify("#nav-header-mobile ul li")
-  fontifyAndColorize("h1")
+  fontify("#nav-header-pc ul li a")
+  fontify("#nav-header-mobile ul li a")
+  fontify("h1")
+  //fontifyAndColorize("h1")
   document.querySelector("#menu-expand i").addEventListener('click', openOrCloseMobileNavMenu)
 }
 function colorizeParagraphs(){
@@ -114,6 +115,13 @@ function fontifyAndColorize(query){
     currentElement.innerHTML = outputString
   }
 }
+function charIsUppercase(char){
+  let charCode = char.charCodeAt(0)
+  if(charCode>=65&&charCode<=90){
+    return true
+  }
+  return false
+}
 function charIsLetter(char){
   let charCode = char.charCodeAt(0)
 
@@ -126,6 +134,28 @@ function charIsLetter(char){
   return false
 }
 function fontify(query){
+  let elementArray = document.querySelectorAll(query)
+
+  for(let i = 0; i < elementArray.length; i++){
+    let outputString = ""
+    let currentElement = elementArray[i]
+    let currentElementText = currentElement.innerText
+    for(let j = 0; j < currentElementText.length; j++){
+      let currentLetter = currentElementText.substring(j,j+1)
+      if(charIsUppercase(currentLetter)){
+        outputString += "<span class=\"pointed-text\">"
+        outputString += currentLetter
+        outputString += "</span>"
+      }
+      else {
+        outputString += "<span class=\"vacer-text\">"
+        outputString += currentLetter.toUpperCase()
+        outputString += "</span>"
+      }
+    }
+    elementArray[i].innerHTML = outputString
+  }
+  /*
   let listItems = document.querySelectorAll(query)
   for(let i = 0; i < listItems.length; i++){
     let innerText = listItems[i].innerHTML
@@ -141,5 +171,5 @@ function fontify(query){
       outputString += "</span> "
     }
     listItems[i].innerHTML = outputString
-  }
+  }*/
 }

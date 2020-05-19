@@ -12,20 +12,9 @@
 }
 .vacer-text{
   font-family: VacerBold;
-  font-size: 28px;
-}
-.vacer-text-lg{
-  font-family: VacerBold;
-  font-size: 44px;
 }
 .pointed-text{
-  font-size:40px;
   font-family: PointedlyMad;
-}
-.pointed-text-lg{
-  margin-right:1px;
-  font-family: PointedlyMad;
-  font-size: 64px;
 }
 .blue-text{
   color:var(--primary);
@@ -111,14 +100,22 @@ header{
   text-align: center;
   font-family: VacerBold;
   font-size: 26px;
-  text-transform:uppercase;
   padding-top: 8px;
   padding-bottom: 12px;
-  border-bottom: 1px #eee solid;
+  border-bottom: 1px var(--primary) solid;
 }
-#nav-header-mobile li:first-letter{
-  font-family: PointedlyMad;
+#nav-header-mobile li:last-child{
+  border-bottom:none;
+}
+li a{
+  text-decoration: none;
+  color:var(--whiteMain);
+}
+li .pointed-text{
   font-size: 44px;
+}
+li .vacer-text{
+  font-size: 29px;
 }
 #ctas{
   float: right;
@@ -156,32 +153,45 @@ main{
 .main-text{
   padding: 16px;
 }
+h4{
+  color:var(--accentYellow);
+  text-align: center;
+  padding:0;
+}
 h1{
-  text-shadow: -1px -1px #333;
+  text-shadow: -1px -1px var(--accentRed);
   border-bottom:1px var(--primary) solid;
   text-align:center;
   font-size: 44px;
-  font-family: PointedlyMad;
-  color: var(--accentRed);
+  font-family: VacerStandard;
+  color: var(--whiteMain);
   padding-bottom: 16px;
-  padding-top: 8px;
+  margin-top:0;
   margin-left: 16px;
   margin-right: 16px;
+  line-height:36px;
+}
+h1 .pointed-text {
+  font-size: 56px;
+}
+h1 .vacer-text{
+  font-size:33px;
 }
 p{
-  color: var(--accentYellow);
+  color: var(--whiteMain);
   font-size:26px;
   line-height:32px;
   font-family:VacerStandard;
-}
+}/*
 p:first-letter{
   font-family:PointedlyMad;
-  color: var(--accentOrange);
+  color: var(--accentRed);
   font-size: 44px;
   margin-right: 1px;
-}
-a{
-  color:var(--primary);
+  text-shadow: -1px -1px var(--primary);
+}*/
+p a{
+  color:var(--accentYellow);
   text-decoration: none;
 }
 footer{
