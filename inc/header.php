@@ -15,7 +15,7 @@
   <div id="page">
     <header>
       <div id="branding-mobile">
-        <a href="<?php echo $_SERVER['PHP_SELF'];?>">
+        <a href="index.php">
           <img src="img/logo/logocropped.jpg" alt="Los Tacos Amigos">
         </a>
       </div>
@@ -34,7 +34,7 @@
             <a href="news.php">News</a>
           </li>
           <li>
-            <a href="<?php echo $_SERVER['PHP_SELF'];?>">
+            <a href="index.php">
               <img src="img/logo/logocropped.jpg" alt="">
             </a>
           </li>
