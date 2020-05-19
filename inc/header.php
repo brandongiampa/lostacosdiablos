@@ -21,10 +21,10 @@
       </div>
       <div id="menu-expand">
         <i class="fas fa-bars"></i>
-      </div>
+      </div><!--
       <div id="ctas">
         <a href="#" class="btn btn-red">ORDER NOW</a>
-      </div>
+      </div>-->
       <nav id="nav-header-pc" style="visibility: hidden; position: absolute; height: 0;">
         <ul>
           <li>
