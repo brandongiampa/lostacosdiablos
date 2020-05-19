@@ -14,6 +14,10 @@ function onLoad(){
   fontify("h1")
   //fontifyAndColorize("h1")
   document.querySelector("#menu-expand i").addEventListener('click', openOrCloseMobileNavMenu)
+  let blackouts = document.querySelectorAll(".blackout")
+  for(let i = 0; i < blackouts.length; i++){
+    blackouts[i].addEventListener('click', openOrCloseMobileNavMenu)
+  }
 }
 function colorizeParagraphs(){
   let paragraphs = document.querySelectorAll("p")
