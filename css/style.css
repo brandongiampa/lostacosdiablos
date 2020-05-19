@@ -8,15 +8,36 @@
 }
 @font-face{
   font-family: VacerStandard;
-  src: url(../fonts/VacerSansLightPersonal.ttf);
+  src: url(../fonts/VacerSansBookPersonal.ttf);
 }
 .vacer-text{
   font-family: VacerBold;
   font-size: 28px;
 }
+.vacer-text-lg{
+  font-family: VacerBold;
+  font-size: 44px;
+}
 .pointed-text{
   font-size:40px;
   font-family: PointedlyMad;
+}
+.pointed-text-lg{
+  margin-right:1px;
+  font-family: PointedlyMad;
+  font-size: 64px;
+}
+.blue-text{
+  color:var(--primary);
+}
+.red-text{
+  color:var(--accentRed);
+}
+.yellow-text{
+  color:var(--accentYellow);
+}
+.orange-text{
+  color:var(--accentOrange);
 }
 :root{
   --primary:#13cfec;
@@ -136,17 +157,58 @@ main{
   padding: 16px;
 }
 h1{
+  text-shadow: -1px -1px #333;
+  border-bottom:1px var(--primary) solid;
   text-align:center;
-  font-size: 36px;
-  font-family: VacerBold;
+  font-size: 44px;
+  font-family: PointedlyMad;
+  color: var(--accentRed);
+  padding-bottom: 16px;
+  padding-top: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 p{
+  color: var(--accentYellow);
   font-size:26px;
   line-height:32px;
   font-family:VacerStandard;
 }
+p:first-letter{
+  font-family:PointedlyMad;
+  color: var(--accentOrange);
+  font-size: 44px;
+  margin-right: 1px;
+}
+a{
+  color:var(--primary);
+  text-decoration: none;
+}
 footer{
+  border-top: 1px var(--accentRed) solid;
+  padding-top: 8px;
+  padding-bottom: 2px;
   position: relative;
+  text-align: center;
+  display:flex;
+}
+#footer-contact-mobile{
+  width:50%;
+  font-size: 20px;
+  color:var(--accentYellow);
+}
+#footer-social-nav-mobile{
+  width:50%;
+}
+.fa-facebook-f{
+  color:var(--primary);
+}
+.fa-instagram{
+  color:var(--primary);
+}
+#footer-social-nav-mobile i{
+  margin: 12px;
+  font-size: 48px;
 }
 .blackout{
   z-index:-1;

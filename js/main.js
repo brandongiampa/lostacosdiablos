@@ -11,7 +11,31 @@ var mobileMenuIsOpen=false
 function onLoad(){
   fontify("#nav-header-pc ul li")
   fontify("#nav-header-mobile ul li")
+  fontifyAndColorize("h1")
   document.querySelector("#menu-expand i").addEventListener('click', openOrCloseMobileNavMenu)
+}
+function colorizeParagraphs(){
+  let paragraphs = document.querySelectorAll("p")
+  for(let i = 0; i < paragraphs.length; i++){
+    let paragraphText= paragraphs[i].innerText
+    let outputString = ""
+    for(let j = 0; j < paragraphText.length; j++){
+      let charCode = paragraphText.charCodeAt(j)
+      if((charCode > 32 && charCode < 48)||(charCode > 57 && charCode < 65)||(charCode > 90 && charCode < 97)||(charCode > 122 && charCode < 127)){
+        outputString += "<span class=\"blue-text\">" + paragraphText.substring(j, j+1) + "</span>"
+      }
+      else {
+        outputString += paragraphText.substring(j, j+1)
+      }
+      paragraphs[i].innerHTML = outputString
+    }
+  }
+}
+function getNextColor(color){
+  switch(color){
+    case "red": {return "yellow"; break;}
+    default: {return "red"; break;}
+  }
 }
 function unblacken(){
   let headerAndFooterOpaques = document.getElementsByClassName("blackout")
@@ -21,7 +45,6 @@ function unblacken(){
       headerAndFooterOpaques[i].style.zIndex = "-1"
     },200)
   }
-
 }
 function blackOut(){
   let headerAndFooterOpaques = document.getElementsByClassName("blackout")
@@ -53,6 +76,54 @@ function openOrCloseMobileNavMenu(){
     openMobileNavMenu()
   }
   mobileMenuIsOpen = !mobileMenuIsOpen
+}
+function fontifyAndColorize(query){
+  let elements = document.querySelectorAll(query)
+
+  for(let i = 0; i < elements.length; i++){
+    let outputString = ""
+    let color="red"
+    let currentElement = elements[i]
+    let currentElementText = currentElement.innerText
+    currentElement.innerHTML = currentElement.innerText
+    let regexUpperCase = /[A-Z]/
+    console.log(currentElementText)
+
+    for(let j = 0; j < currentElementText.length; j++){
+      let currentLetter = currentElementText.substring(j, j+1)
+
+      if(currentLetter !== " "){
+        let fontClass = regexUpperCase.test(currentLetter) ? "pointed-text-lg" : "vacer-text-lg"
+        let colorClass = charIsLetter(currentLetter) ? color + "-text" : "orange-text"
+        outputString += "<span class=\""
+        outputString += fontClass
+        outputString += " "
+        outputString += colorClass
+        outputString += "\">"
+        outputString += currentLetter.toUpperCase()
+        outputString += "</span>"
+      }
+      else {
+        outputString += " "
+      }
+
+      if(charIsLetter(currentLetter)&&currentLetter!==" "){
+        color = getNextColor(color)
+      }
+    }
+    currentElement.innerHTML = outputString
+  }
+}
+function charIsLetter(char){
+  let charCode = char.charCodeAt(0)
+
+  if(charCode>=65&&charCode<=90){
+    return true
+  }
+  else if(charCode>=97&&charCode<=122){
+    return true
+  }
+  return false
 }
 function fontify(query){
   let listItems = document.querySelectorAll(query)

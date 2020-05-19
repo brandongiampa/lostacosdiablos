@@ -1,10 +1,15 @@
 <footer>
+  <div class="blackout"></div>
   <div id="footer-contact-mobile">
-    Anaheim<br>(714) 833-5181
+    Los Tacos Amigos Anaheim<br>(714) 833-5181
   </div>
   <div id="footer-social-nav-mobile">
-    <i class="fab fa-facebook"></i>
-    <i class="fab fa-instagram"></i>
+    <a href="https://facebook.com">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://instagram.com">
+      <i class="fab fa-instagram"></i>
+    </a>
   </div>
 </footer>
 </div>
