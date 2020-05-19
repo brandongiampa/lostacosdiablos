@@ -1,7 +1,10 @@
 <?php include_once 'inc/header.php';?>
 <main>
   <div class="news-item">
-    <div class="news-item-date">May 31, 2020</div>
+    <div class="news-item-header">
+      <div class="news-item-date">May 31, 2020</div>
+      <h2>We are on Postmates!</h2>
+    </div>
     <div class="news-item-body">
       <div class="news-item-img">
         <img src="img/original/postmates.jpg" alt="">
@@ -12,7 +15,10 @@
     </div>
   </div>
   <div class="news-item">
-    <div class="news-item-date">May 31, 2020</div>
+    <div class="news-item-header">
+      <div class="news-item-date">May 31, 2020</div>
+      <h2>Los Rojos estan Aqui!</h2>
+    </div>
     <div class="news-item-body">
       <div class="news-item-img">
         <img src="img/original/rojos.jpg" alt="">
