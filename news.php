@@ -1,5 +1,8 @@
 <?php include_once 'inc/header.php';?>
 <main>
+  <div class="page-header">
+    <h1>NEWS</h1>
+  </div>
   <div class="news-item">
     <div class="news-item-header">
       <div class="news-item-date">May 31, 2020</div>
