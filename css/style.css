@@ -159,7 +159,7 @@ h4{
   padding:0;
 }
 h1{
-  text-shadow: -1px -1px var(--accentRed);
+  text-shadow: -1px -1px transparent;
   border-bottom:1px var(--primary) solid;
   text-align:center;
   font-size: 44px;
@@ -177,22 +177,65 @@ h1 .pointed-text {
 h1 .vacer-text{
   font-size:33px;
 }
+h2{
+  text-shadow: -1px -1px #222;
+  text-align: center;
+  font-family: PointedlyMad, cursive, sans-serif;
+  color:var(--accentRed);
+  font-size: 32px;
+  letter-spacing: 1px;
+}
 p{
   color: var(--whiteMain);
   font-size:26px;
   line-height:32px;
   font-family:VacerStandard;
-}/*
-p:first-letter{
-  font-family:PointedlyMad;
-  color: var(--accentRed);
-  font-size: 44px;
-  margin-right: 1px;
-  text-shadow: -1px -1px var(--primary);
-}*/
+}
+.menu-section{
+  text-align: center;
+}
 p a{
   color:var(--accentYellow);
   text-decoration: none;
+}
+table, ul{
+  font-family:"Times New Roman", Times, serif;
+  font-size: 24px;
+  font-weight:bold;
+  padding:0;
+  color: var(--accentYellow);
+}
+table{
+  margin:auto;
+}
+td, li{
+  text-align: left;
+  padding: 2px 24px;
+}
+ul{
+  text-align: center;
+  list-style: none;
+}
+.menu-text{
+  background:linear-gradient(var(--accentOrange) 0%,var(--accentYellow) 99%, var(--accentYellow) 100%);
+  color:transparent;
+  background-clip: text;
+  text-align:center;
+  font-size:24px;
+}
+.menu-section{
+  text-align: center;
+}
+.menu-single-items{
+
+}
+.menu-section:last-child{
+  border-bottom: 1px var(--primary) solid;
+}
+.menu-subsection-split-2{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
 }
 footer{
   border-top: 1px var(--accentRed) solid;
@@ -231,6 +274,14 @@ footer{
 }
 img{
   max-width: 100%;
+}
+.price{
+  color: var(--primary);
+}
+p{
+  background:linear-gradient(var(--accentOrange) 0%,var(--accentYellow) 75%, var(--accentYellow) 100%);
+  color:transparent;
+  background-clip: text;
 }
 @media screen and (min-width:1200px){
   #bg{
