@@ -66,3 +66,10 @@
     </nav>
     <main>
       <div class="blackout"></div>
+      <div id="hero-image">
+        <img src="img/original/<?php echo $page_hero_image;?>.jpg" alt="">
+      </div>
+      <div class="main-text">
+        <div class="page-header">
+          <h1><?php echo $page_header;?></h1>
+        </div>

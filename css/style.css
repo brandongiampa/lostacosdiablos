@@ -17,22 +17,30 @@
   font-family: PointedlyMad;
 }
 .blue-text{
-  color:var(--primary);
+  color:var(--blue);
 }
 .red-text{
-  color:var(--accentRed);
+  color:var(--red);
 }
 .yellow-text{
-  color:var(--accentYellow);
+  color:var(--yellow);
 }
 .orange-text{
-  color:var(--accentOrange);
-}
+  color:var(--orange);
+}/*
 :root{
-  --primary:#13cfec;
-  --accentRed:#EC3013;
-  --accentOrange:#EC9D13;
-  --accentYellow:#CFEC13;
+  --blue:#13cfec;
+  --red:#EC3013;
+  --orange:#EC9D13;
+  --yellow:#CFEC13;
+  --blackMain:#000;
+  --whiteMain:#eee;
+}*/
+:root{
+  --blue:#13cfec;
+  --red:#EC3013;
+  --orange:#EC9D13;
+  --yellow:#CFEC13;
   --blackMain:#000;
   --whiteMain:#eee;
 }
@@ -56,7 +64,7 @@ header{
   height: 80px;
   padding-top:16px;
   padding-bottom:16px;
-  border-bottom: 1px var(--accentRed) solid;
+  border-bottom: 1px var(--red) solid;
 }
 #branding-mobile{
   margin-left:16px;
@@ -76,7 +84,7 @@ header{
   font-size: 40px;
 }
 #nav-header-mobile{
-  border-bottom: 1px var(--primary) solid;
+  border-bottom: 1px var(--blue) solid;
   z-index:1;
   position:absolute;
   top:112px;
@@ -102,7 +110,7 @@ header{
   font-size: 26px;
   padding-top: 8px;
   padding-bottom: 12px;
-  border-bottom: 1px var(--primary) solid;
+  border-bottom: 1px var(--blue) solid;
 }
 #nav-header-mobile li:last-child{
   border-bottom:none;
@@ -132,20 +140,20 @@ li .vacer-text{
 }
 .btn-changing{
   text-shadow: -1px -1px #000;
-  background-color: var(--accentRed);
+  background-color: var(--red);
   animation: 7s orangeToYellow;
   animation-iteration-count: infinite;
 }
 @keyframes orangeToYellow{
-  0%{background-color: var(--accentRed);}
-  50%{background-color: var(--accentOrange);}
-  100%{background-color: var(--accentRed);}
+  0%{background-color: var(--red);}
+  50%{background-color: var(--orange);}
+  100%{background-color: var(--red);}
 }
 .btn-blue{
-  background-color: var(--primary);
+  background-color: var(--blue);
 }
 .btn-red{
-  background-color: var(--accentRed);
+  background-color: var(--red);
 }
 main{
   position: relative;
@@ -154,14 +162,15 @@ main{
   padding: 16px;
 }
 h4{
-  color:var(--accentYellow);
+  color:var(--yellow);
   text-align: center;
   padding:0;
 }/*
 #hero-image{
-  border-bottom: 4px var(--accentRed) solid;
+  border-bottom: 4px var(--red) solid;
 }*/
 .page-header{
+  border-bottom:1px var(--blue) solid;
   z-index:0;
   display:flex;
   justify-content: center;
@@ -172,7 +181,7 @@ h4{
   content:"";
   width: 24px;
   height:2px;
-  background-color:var(--accentRed);
+  background-color:var(--red);
   margin-bottom: 16px;
 }
 .page-header img{
@@ -203,12 +212,12 @@ h2{
   text-shadow: -1px -1px #222;
   text-align: center;
   font-family: PointedlyMad, cursive, sans-serif;
-  color:var(--accentRed);
+  color:var(--red);
   font-size: 32px;
   letter-spacing: 1px;
 }
 p{
-  margin-top:8px;
+  margin-top:4px;
   color: var(--whiteMain);
   font-size:26px;
   line-height:34px;
@@ -216,14 +225,14 @@ p{
   margin-bottom:8px;
 }
 p:first-of-type::first-letter{
-  font-size: 64px;
+  font-size: 36px;
   font-family:PointedlyMad;
 }
 .menu-section{
   text-align: center;
 }
 p a{
-  color:var(--accentYellow);
+  color:var(--yellow);
   text-decoration: none;
 }
 table, ul{
@@ -231,7 +240,7 @@ table, ul{
   font-size: 24px;
   font-weight:bold;
   padding:0;
-  color: var(--accentYellow);
+  color: var(--yellow);
 }
 table{
   margin:auto;
@@ -245,7 +254,7 @@ ul{
   list-style: none;
 }
 .menu-text{
-  background:linear-gradient(var(--accentOrange) 0%,var(--accentYellow) 99%, var(--accentYellow) 100%);
+  background:linear-gradient(var(--orange) 0%,var(--yellow) 99%, var(--yellow) 100%);
   color:transparent;
   background-clip: text;
   text-align:center;
@@ -258,7 +267,7 @@ ul{
 
 }
 .menu-section:last-child{
-  border-bottom: 1px var(--primary) solid;
+  border-bottom: 1px var(--blue) solid;
 }
 .menu-subsection-split-2{
   display:flex;
@@ -266,7 +275,7 @@ ul{
   justify-content: space-around;
 }
 footer{
-  border-top: 1px var(--accentRed) solid;
+  border-top: 1px var(--red) solid;
   padding-top: 8px;
   padding-bottom: 2px;
   position: relative;
@@ -276,16 +285,16 @@ footer{
 #footer-contact-mobile{
   width:50%;
   font-size: 20px;
-  color:var(--accentYellow);
+  color:var(--yellow);
 }
 #footer-social-nav-mobile{
   width:50%;
 }
 .fa-facebook-f{
-  color:var(--primary);
+  color:var(--blue);
 }
 .fa-instagram{
-  color:var(--primary);
+  color:var(--blue);
 }
 #footer-social-nav-mobile i{
   margin: 12px;
@@ -304,7 +313,7 @@ img{
   max-width: 100%;
 }
 .price{
-  color: var(--primary);
+  color: var(--blue);
 }
 @media screen and (min-width:1200px){
   #bg{

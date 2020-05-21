@@ -1,13 +1,7 @@
-<?php include_once 'inc/header.php';?>
-  <div id="hero-image">
-    <img src="img/original/newshero.jpg" alt="">
-  </div>
-  <div class="page-header">
-    <img src="img/original/drop-left.jpg" alt="">
-    <h1>News</h1>
-    <img src="img/original/drop-right2.jpg" alt="" id="drop-right">
-  </div>
-  <div class="page-header-blip"></div>
+<?php
+  $page_hero_image = "newshero";
+  $page_header = "News";
+  include_once 'inc/header.php';?>
   <div class="news-item">
     <div class="news-item-header">
       <div class="news-item-date">May 31, 2020</div>

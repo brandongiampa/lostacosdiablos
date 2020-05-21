@@ -1,3 +1,5 @@
+</div>
+</main>
 <footer>
   <div class="blackout"></div>
   <div id="footer-contact-mobile">

@@ -1,4 +1,7 @@
-<?php include_once 'inc/header.php';?>
+<?php
+  $page_hero_image = "menuhero";
+  $page_header = "Menu";
+  include_once 'inc/header.php';?>
 <?php
   $carnesList = array(
     "Asada",
@@ -41,16 +44,6 @@
     ),
   );
 ?>
-      <div id="hero-image">
-        <img src="img/original/menuhero.jpg" alt="">
-      </div>
-      <div class="main-text">
-        <div class="page-header">
-          <img src="img/original/drop-left.jpg" alt="">
-          <h1>Menu</h1>
-          <img src="img/original/drop-right2.jpg" alt="" id="drop-right">
-        </div>
-<div class="page-header-blip"></div>
         <div class="menu-section">
           <div class="menu-subsection">
             <div class="menu-subsection-header">
