@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
   <title>Los Tacos Amigos</title>
+  <link rel="icon" href="img/original/icon.jpg">
 </head>
 <body>
   <div id="bg"></div>
@@ -63,3 +64,5 @@
         </li>
       </ul>
     </nav>
+    <main>
+      <div class="blackout"></div>
