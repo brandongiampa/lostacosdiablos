@@ -3,7 +3,7 @@
 <footer>
   <div class="blackout"></div>
   <div id="footer-contact-mobile">
-    Los Tacos Amigos Anaheim<br>(714) 833-5181
+    Los Tacos Diablos Anaheim<br>(714) 833-5181
   </div>
   <div id="footer-social-nav-mobile">
     <a href="https://facebook.com">

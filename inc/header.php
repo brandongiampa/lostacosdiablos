@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
-  <title>Los Tacos Amigos</title>
+  <title>Los Tacos Diablos</title>
   <link rel="icon" href="img/original/icon.jpg">
 </head>
 <body>
@@ -17,7 +17,7 @@
     <header>
       <div id="branding-mobile">
         <a href="index.php">
-          <img src="img/logo/logocropped.jpg" alt="Los Tacos Amigos">
+          <img src="img/logo/newlogocropped.jpg" alt="Los Tacos Diablos">
         </a>
       </div>
       <div id="menu-expand">
@@ -36,7 +36,7 @@
           </li>
           <li>
             <a href="index.php">
-              <img src="img/logo/logocropped.jpg" alt="">
+              <img src="img/logo/newlogocropped.jpg" alt="">
             </a>
           </li>
           <li>
@@ -67,7 +67,7 @@
     <main>
       <div class="blackout"></div>
       <div id="hero-image">
-        <img src="img/original/<?php echo $page_hero_image;?>.jpg" alt="">
+        <img src="img/large/<?php echo $page_hero_image;?>.jpg" alt="">
       </div>
       <div class="main-text">
         <div class="page-header">
