@@ -1,5 +1,5 @@
 <?php
-  $page_hero_image = "menuhero";
+  $page_hero_image = "twelvebythree1";
   $page_header = "Menu";
   include_once 'inc/header.php';?>
 <?php

@@ -1,6 +1,6 @@
 <?php
-  $page_header = "Welcome to Los Tacos Amigos!";
-  $page_hero_image = "buildingcrop";
+  $page_header = "Welcome to Los Tacos Diablos!";
+  $page_hero_image = "tacos2-blur";
   include_once 'inc/header.php';
 ?>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, pariatur! Assumenda reprehenderit <a href="#">enim saepe</a> nostrum officia placeat quisquam repellat cum quaerat nemo totam dolorem aliquam, minus accusantium sit deserunt beatae magni, dolore atque error aut, omnis! Numquam?</p>

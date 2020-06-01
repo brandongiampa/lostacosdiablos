@@ -1,5 +1,5 @@
 <?php
-  $page_hero_image = "storyheader";
+  $page_hero_image = "twelvebythree2";
   $page_header = "Our Story";
   include_once 'inc/header.php';?>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, pariatur! Assumenda reprehenderit <a href="#">enim saepe</a> nostrum officia placeat quisquam repellat cum quaerat nemo totam dolorem aliquam, minus accusantium sit deserunt beatae magni, dolore atque error aut, omnis! Numquam?</p>

@@ -1,5 +1,5 @@
 <?php
-  $page_hero_image = "newshero";
+  $page_hero_image = "news";
   $page_header = "News";
   include_once 'inc/header.php';?>
   <div class="news-item">
