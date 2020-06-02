@@ -67,6 +67,33 @@ header{
 #branding-mobile img{
   max-height: 100%;
 }
+#lang-expand{
+  color: #e7e7e7;
+  float:left;
+  margin-left:20px;
+  margin-top:30px;
+  font-size:20px;
+}
+select{
+  font-family: VacerStandard;
+  margin-left:-4px;
+  padding:0;
+  background-color: var(--blackMain);
+  color:var(--whiteMain);
+  border:none;
+  font-size:20px;
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+}
+option{
+  font-family:VacerStandard;
+  font-size:20px;
+  background-color:var(--blue);
+}
+option:active, option:hover{
+  outline-color:var(--red);
+}
 #menu-expand{
   float: right;
   margin-top: 16px;
