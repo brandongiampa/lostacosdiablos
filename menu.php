@@ -47,7 +47,7 @@
         <div class="menu-section">
           <div class="menu-subsection">
             <div class="menu-subsection-header">
-              <h2>CARNES</h2>
+              <h5>CARNES</h5>
             </div>
             <table class="menu-subsection-table menu-text">
               <?php
@@ -84,7 +84,7 @@
           </div>
           <div class="menu-item">
             <div class="menu-header">
-              <h2>Tacos <span class="price">$1.25</span></h2>
+              <h5>Tacos <span class="price">$1.25</span></h5>
             </div>
             <div class="menu-text">
               <?php
@@ -97,7 +97,7 @@
           </div>
           <div class="menu-section">
             <div class="menu-header">
-              <h2>Tacos <span class="price">$1.50</span></h2>
+              <h5>Tacos <span class="price">$1.50</span></h5>
             </div>
             <div class="menu-text">
               <?php
@@ -109,24 +109,24 @@
             </div>
           </div>
           <div class="menu-single-items">
-            <h2>BURRITOS <span class="price">$6.50-$8.95</span></h2>
-            <h2>QUESADILLAS <span class="price">$6.75</span></h2>
-            <h2>ASADA FRIES <span class="price">$7.50</span></h2>
-            <h2>SOPAS <span class="price">$3.25</span></h2>
-            <h2>MULITAS <span class="price">$3.25</span></h2>
-            <h2>TORTAS <span class="price">$7.50</span></h2>
-            <h2>PAPA / BAKED POTATO <span class="price">$7.50</span></h2>
+            <h5>BURRITOS <span class="price">$6.50-$8.95</span></h5>
+            <h5>QUESADILLAS <span class="price">$6.75</span></h5>
+            <h5>ASADA FRIES <span class="price">$7.50</span></h5>
+            <h5>SOPAS <span class="price">$3.25</span></h5>
+            <h5>MULITAS <span class="price">$3.25</span></h5>
+            <h5>TORTAS <span class="price">$7.50</span></h5>
+            <h5>PAPA / BAKED POTATO <span class="price">$7.50</span></h5>
           </div>
           <div class="menu-item">
-            <h2>FLAMING ASADA FRIES <span class="price">$9.95</span></h2>
+            <h5>FLAMING ASADA FRIES <span class="price">$9.95</span></h5>
             <div class="subtext menu-text">A bunch of text I can't read</div>
           </div>
           <div class="menu-item">
-            <h2>NACHOS <span class="price">$7.50</span></h2>
+            <h5>NACHOS <span class="price">$7.50</span></h5>
             <div class="subtext menu-text">A bunch of text I can't read <span class="price">$9.00</span></div>
           </div>
           <div class="menu-subsection-header">
-            <h2>MARISCOS</h2>
+            <h5>MARISCOS</h5>
           </div>
           <table class="menu-text">
             <tr>
