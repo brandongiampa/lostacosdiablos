@@ -18,7 +18,7 @@
       </div>
     </div>
   </a>
-  <a href="news.item.php">
+  <a href="news-item.php">
     <div class="news-item">
       <div class="news-item-header">
         <h2>Los Rojos estan Aqui!</h2>
