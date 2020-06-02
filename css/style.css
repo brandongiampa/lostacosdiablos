@@ -34,21 +34,25 @@
   --red:#EC3013;
   --orange:#EC9D13;
   --yellow:#CFEC13;
-  --blackMain:#000;
+  --blackMain:#111;
   --whiteMain:#eee;
 }
 html, body {
+  scrollbar-color: var(--whiteMain) var(--blackMain);
+
   padding:0;
   margin:0;
-  background-color: #000;
+  background-color: var(--blackMain);
   color: var(--whiteMain);
+}
+body{
 }
 #page{
   position: relative;
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  background-color: #000;
+  background-color: var(--blackMain);
 }
 header{
   background-color: inherit;
@@ -110,7 +114,7 @@ option:active, option:hover{
   top:112px;
   width:100%;
   transition: .3s all;
-  background-color:#000;
+  background-color:var(--blackMain);
   transform:translateY(-100%);
 }
 #close-nav-header-mobile{
@@ -353,7 +357,7 @@ footer{
   position: absolute;
   width:100%;
   height:100%;
-  background-color: #000;
+  background-color: var(--blackMain);
   opacity:0;
   transition:.2s opacity;
 }
@@ -379,7 +383,7 @@ img{
     height: 100%;
     width: 100%;
     position: fixed;
-    background-color: #000;
+    background-color: var(--blackMain);
     opacity: .5;
   }
 }
