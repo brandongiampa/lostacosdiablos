@@ -118,6 +118,10 @@ li .pointed-text{
 li .vacer-text{
   font-size: 29px;
 }
+a{
+  color:white;
+  text-decoration:none;
+}
 #ctas{
   float: right;
   text-align:center;
@@ -205,9 +209,10 @@ h2{
   text-shadow: -1px -1px #222;
   text-align: center;
   font-family: PointedlyMad, cursive, sans-serif;
-  color:var(--red);
+  color:var(--whiteMain);
   font-size: 32px;
   letter-spacing: 1px;
+  margin-bottom:12px;
 }
 p{
   margin-top:4px;
@@ -245,6 +250,22 @@ td, li{
 ul{
   text-align: center;
   list-style: none;
+}
+.news-item{
+  padding-bottom:32px;
+}
+.news-item-date{
+  font-style:italic;
+  color:#eee;
+  font-weight:300;
+  text-align:center;
+  font-size:18px;
+  margin-bottom:12px;
+}
+.news-item-text{
+  margin-top:6px;
+  font-size:16px;
+  color:white;
 }
 .menu-text{
   background:linear-gradient(var(--orange) 0%,var(--yellow) 99%, var(--yellow) 100%);
