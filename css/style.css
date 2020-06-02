@@ -15,6 +15,7 @@
 }
 .pointed-text{
   font-family: PointedlyMad;
+  color:var(--red);
 }
 .blue-text{
   color:var(--blue);
@@ -27,15 +28,7 @@
 }
 .orange-text{
   color:var(--orange);
-}/*
-:root{
-  --blue:#13cfec;
-  --red:#EC3013;
-  --orange:#EC9D13;
-  --yellow:#CFEC13;
-  --blackMain:#000;
-  --whiteMain:#eee;
-}*/
+}
 :root{
   --blue:#13cfec;
   --red:#EC3013;
@@ -314,6 +307,9 @@ img{
 }
 .price{
   color: var(--blue);
+}
+.gm-style-iw-c{
+  background-color:var(--blackMain);
 }
 @media screen and (min-width:1200px){
   #bg{
