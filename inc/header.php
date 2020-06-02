@@ -20,32 +20,32 @@
           <img src="img/logo/newlogocropped.jpg" alt="Los Tacos Diablos">
         </a>
       </div>
-      <div id="lang-expand"><!--
-        <i class="fas fa-globe"></i><span id="language-code">EN<i class="fas fa-caret-down"></i></span>
--->
-      <i class="fas fa-globe"></i>
-      <select name="language" id="language">
-        <option value="English">EN</option>
-        <option value="Spanish">ES</option>
-        <option value="Korean">KO</option>
-      </select>
+      <div id="lang-expand">
+        <i class="fas fa-globe"></i>
+        <select name="language" id="language">
+          <option value="English">EN</option>
+          <option value="Spanish">ES</option>
+          <option value="Korean">KO</option>
+        </select>
       </div>
       <div id="menu-expand">
         <i class="fas fa-bars"></i>
       </div>
-      <nav id="nav-header-pc" style="visibility: hidden; position: absolute; height: 0;">
-        <ul>
+      <nav id="nav-header-pc">
+        <ul class="nav-header-ul-pc" id="nav-header-pc-left">
           <li>
             <a href="our-story.php">Our Story</a>
           </li>
           <li>
             <a href="news.php">News</a>
           </li>
-          <li>
-            <a href="index.php">
-              <img src="img/logo/newlogocropped.jpg" alt="">
-            </a>
-          </li>
+        </ul>
+        <div id="branding-pc">
+          <a href="index.php">
+            <img src="img/logo/newlogocropped.jpg" alt="index" style="height:120px; width:auto;">
+          </a>
+        </div>
+        <ul class="nav-header-ul-pc" id="nav-header-pc-right">
           <li>
             <a href="menu.php">Menu</a>
           </li>

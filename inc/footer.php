@@ -3,7 +3,7 @@
 <footer>
   <div class="blackout"></div>
   <div id="footer-contact-mobile">
-    Los Tacos Diablos Anaheim<br>(714) 833-5181
+    <i>Los Tacos Diablos (Socal)</i><br><a href="tel:714-833-5181">(714) 833-5181</a>
   </div>
   <div id="footer-social-nav-mobile">
     <a href="https://facebook.com">

@@ -4,7 +4,7 @@
   include_once 'inc/header.php';?>
         <!--<p>Being a business on wheels, we take advantage of the situation and try to get some quality time on the beach. Our schedule is as follows:</p>
       --></div>
-      <div id="map" style="width:100%;height:400px;"></div>
+      <div id="map"></div>
     </main>
     <script>
 
