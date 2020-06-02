@@ -50,7 +50,7 @@
       var infoWindow = new google.maps.InfoWindow({content: ""})
 
       destinations.forEach((destination)=>{
-        let marker = new google.maps.Marker({position: destination.location, map: map, icon:"http://192.168.1.232:8080/lostacosamigos/img/logo/marker.png"})
+        let marker = new google.maps.Marker({position: destination.location, map: map, icon:"http://192.168.1.232:8080/lostacosamigos/img/logo/marker2.png"})
         marker.addListener('click', ()=>{
           infoWindow.setContent(destination.content)
           infoWindow.open(map, marker)
