@@ -7,6 +7,7 @@ if (
   document.addEventListener("DOMContentLoaded", onLoad)
 }
 var mobileMenuIsOpen=false
+var languageDropdownIsOpen = false
 
 function onLoad(){
   fontify("#nav-header-pc ul li a")
@@ -18,10 +19,25 @@ function onLoad(){
   for(let i = 0; i < blackouts.length; i++){
     blackouts[i].addEventListener('click', openOrCloseMobileNavMenu)
   }
+  document.querySelector("#lang-expand-visible").addEventListener('click', openOrCloseLanguageDropdown)
   window.addEventListener('resize', onResize)
 }
 function onResize(){
-  
+
+}
+function openOrCloseLanguageDropdown(){
+  let languageDropdown = document.getElementById("language-dropdown-menu")
+
+  if(!languageDropdownIsOpen){
+    languageDropdown.style.visibility = "visible"
+    languageDropdown.style.height = "auto"
+  }
+  else {
+    languageDropdown.style.visibility = "hidden"
+    languageDropdown.style.height = "0"
+  }
+  languageDropdownIsOpen = !languageDropdownIsOpen
+  console.log({languageDropdownIsOpen})
 }
 function colorizeParagraphs(){
   let paragraphs = document.querySelectorAll("p")

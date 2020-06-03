@@ -94,6 +94,7 @@ header{
   top:8px;
   visibility: hidden;
   height:0;
+  z-index:-1;
 }
 #language-dropdown-menu ul li{
   color:#111;
