@@ -45,7 +45,86 @@
       var destinations = [pikeOutlets, zoeterPlace, seacliffVillage]
 
       var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 10, center: getMapCenter(destinations)}
+        document.getElementById('map'), {zoom: 10, center: getMapCenter(destinations),styles: [
+            //{elementType: 'geometry', stylers: [{color: '#111111'}]},
+            //{elementType: 'labels.text.stroke', stylers: [{color: '#333333'}]},
+            //{elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            //{
+            //   featureType: 'administrative.locality',
+            //   elementType: 'labels.text.fill',
+            //   stylers: [{color: '#eeeeee'}]
+            // },
+            // {
+            //   featureType: 'poi',
+            //   elementType: 'labels.text.fill',
+            //   stylers: [{color: '#d59563'}]
+            // },
+            // {
+            //   featureType: 'poi.park',
+            //   elementType: 'geometry',
+            //   stylers: [{color: '#13EC30'}]
+            // },
+            // {
+            //   featureType: 'poi.park',
+            //   elementType: 'labels.text.fill',
+            //   stylers: [{color: '#ffffff'}]
+            // },
+            // {
+            //   featureType: 'road',
+            //   elementType: 'geometry',
+            //   stylers: [{color: '#aaaaaa'}]
+            // },
+            // {
+            //   featureType: 'road',
+            //   elementType: 'geometry.stroke',
+            //   stylers: [{color: '#212a37'}]
+            // },
+            // {
+            //   featureType: 'road',
+            //   elementType: 'labels.text.fill',
+            //   stylers: [{color: '#EC3013'}]
+            // },
+            // {
+            //   featureType: 'road.highway',
+            //   elementType: 'geometry',
+            //   stylers: [{color: '#CFEC13'}]
+            // },
+            // {
+            //   featureType: 'road.highway',
+            //   elementType: 'geometry.stroke',
+            //   stylers: [{color: '#eeeeee'}]
+            // },
+            // {
+            //   featureType: 'road.highway',
+            //   elementType: 'labels.text.fill',
+            //   stylers: [{color: '#EC3013'}]
+            // },
+            // {
+            //   featureType: 'transit',
+            //   elementType: 'geometry',
+            //   stylers: [{color: '#2f3948'}]
+            // },
+            // {
+            //   featureType: 'transit.station',
+            //   elementType: 'labels.text.fill',
+            //   stylers: [{color: '#333'}]
+            // },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#42D9F0'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#fff'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#fff'}]
+            }
+          ]}
       )
       var infoWindow = new google.maps.InfoWindow({content: ""})
 
