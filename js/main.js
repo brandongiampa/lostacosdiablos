@@ -8,36 +8,76 @@ if (
 }
 var mobileMenuIsOpen=false
 var languageDropdownIsOpen = false
+var documentBody
+var languageExpandVisible
+var languageDropdownMenu
+var languageSelections = document.querySelectorAll('#language-dropdown-menu ul li')
+var currentLanguageSelection
 
 function onLoad(){
+  setVariables()
   fontify("#nav-header-pc ul li a")
   fontify("#nav-header-mobile ul li a")
   fontify("h1")
-  //fontifyAndColorize("h1")
   document.querySelector("#menu-expand i").addEventListener('click', openOrCloseMobileNavMenu)
   let blackouts = document.querySelectorAll(".blackout")
   for(let i = 0; i < blackouts.length; i++){
     blackouts[i].addEventListener('click', openOrCloseMobileNavMenu)
   }
-  document.querySelector("#lang-expand-visible").addEventListener('click', openOrCloseLanguageDropdown)
+  languageExpandVisible.addEventListener('click', openOrCloseLanguageDropdown)
+
+  for(let i = 0; i < languageSelections.length; i++){
+    languageSelections[i].addEventListener('click', changeLanguage)
+  }
+
   window.addEventListener('resize', onResize)
 }
 function onResize(){
 
 }
-function openOrCloseLanguageDropdown(){
-  let languageDropdown = document.getElementById("language-dropdown-menu")
-
-  if(!languageDropdownIsOpen){
-    languageDropdown.style.visibility = "visible"
-    languageDropdown.style.height = "auto"
+function setVariables(){
+  documentBody = document.querySelector("body")
+  languageExpandVisible = document.getElementById("lang-expand-visible")
+  languageDropdownMenu = document.getElementById("language-dropdown-menu")
+}
+function changeLanguage(e){
+  let selectedLanguage = e.target.dataset.selectedlanguage
+  document.cookie = "documentlanguage=" + selectedLanguage
+  setTimeout(()=>{
+    window.location.replace(window.location.href);
+  },0)
+}
+function openOrCloseLanguageDropdown(e){
+  console.log('ffff')
+  if(languageDropdownIsOpen){
+    closeLanguageDropdown()
   }
   else {
-    languageDropdown.style.visibility = "hidden"
-    languageDropdown.style.height = "0"
+    openLanguageDropdown()
   }
+}
+function openLanguageDropdown(){
+  languageDropdownMenu.style.visibility = "visible"
+  languageDropdownMenu.style.height = "auto"
+  setTimeout(()=>{
+    languageDropdownMenu.removeEventListener('click', openOrCloseLanguageDropdown)
+  },0)
+  setTimeout(()=>{
+    documentBody.addEventListener('click', closeLanguageDropdown)
+  },0)
   languageDropdownIsOpen = !languageDropdownIsOpen
-  console.log({languageDropdownIsOpen})
+}
+function closeLanguageDropdown(){
+  console.log("closing")
+  languageDropdownMenu.style.visibility = "hidden"
+  languageDropdownMenu.style.height = "0"
+  setTimeout(()=>{
+    languageDropdownMenu.addEventListener('click', openOrCloseLanguageDropdown)
+  },0)
+  setTimeout(()=>{
+    documentBody.removeEventListener('click', closeLanguageDropdown)
+  },0)
+  languageDropdownIsOpen = !languageDropdownIsOpen
 }
 function colorizeParagraphs(){
   let paragraphs = document.querySelectorAll("p")
@@ -112,7 +152,6 @@ function fontifyAndColorize(query){
     let currentElementText = currentElement.innerText
     currentElement.innerHTML = currentElement.innerText
     let regexUpperCase = /[A-Z]/
-    console.log(currentElementText)
 
     for(let j = 0; j < currentElementText.length; j++){
       let currentLetter = currentElementText.substring(j, j+1)

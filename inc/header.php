@@ -1,5 +1,7 @@
+<?php $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $document_language;?>">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,14 +25,14 @@
       <div id="lang-expand">
         <div id="lang-expand-visible">
           <i class="fas fa-globe"></i>
-          <span id="selected-language">EN</span>
+          <span id="document-language"><?php echo strtoupper($document_language);?></span>
           <span id="language-dropdown-caret">&#9660;</span>
         </div>
         <div id="language-dropdown-menu">
           <ul>
-            <li data-value="English">EN</li>
-            <li data-value="Spanish">ES</li>
-            <li data-value="Korean">KO</li>
+            <li data-selectedlanguage="en">EN</li>
+            <li data-selectedlanguage="es">ES</li>
+            <li data-selectedlanguage="ko">KO</li>
           </ul>
         </div>
       </div>
