@@ -31,9 +31,11 @@
 }
 :root{
   --blue:#13cfec;
+  --blueComp:#42D9F0;
   --red:#EC3013;
   --orange:#EC9D13;
   --yellow:#CFEC13;
+  --green:#63EC13;
   --blackMain:#111;
   --whiteMain:#eee;
 }
@@ -72,9 +74,42 @@ header{
 #lang-expand{
   color: #e7e7e7;
   float:left;
-  margin-left:20px;
-  margin-top:30px;
+  margin-left: 16px;
+  margin-top:31px;
   font-size:20px;
+  position: relative;
+  z-index:1;
+}
+#lang-expand:hover{
+  cursor:default;
+}
+#lang-expand #language-dropdown-caret{
+  font-size: 8px;
+  margin-left:-4px;
+  margin-top:6px;
+}
+#language-dropdown-menu{
+  position: absolute;
+  left:20px;
+  top:8px;
+  visibility: hidden;
+  height:0;
+}
+#language-dropdown-menu ul li{
+  color:#111;
+  font-weight:400;
+  background-color:#ddd;
+  border:1px #eee solid;
+  padding:3px 4px;
+  font-size:20px;
+}
+#language-dropdown-menu ul li:hover{
+  background-color:var(--blue);
+  border-color:var(--blue);
+  cursor:default;
+}
+#language-dropdown-menu ul li .selected{
+  background-color:var(--blue);
 }
 select{
   font-family: VacerStandard;
@@ -98,8 +133,7 @@ option:active, option:hover{
 }
 nav#nav-header-pc{
   position:absolute;
-  height:0;
-  visibility: hidden;
+  bottom:100%;
 }
 #menu-expand{
   float: right;
@@ -382,7 +416,7 @@ img{
     padding:16px 32px;
   }
 }
-@media screen and (min-width:768px){
+@media only screen and (min-width:768px){
   #branding-mobile{
     margin-left:24px;
   }
@@ -423,9 +457,9 @@ img{
     height:600px;
   }
 }
-@media screen and (min-width:992px){
+@media only screen and (min-width:992px){
   header{
-    height:172px;
+    height:148px;
   }
   #branding-mobile, #menu-expand{
     position: absolute;
@@ -434,14 +468,14 @@ img{
   }
   #lang-expand{
     position: absolute;
-    bottom:10px;
-    right:50%;
+    top:48px;
+    right:48px;
+    margin:0;
     transform:translateX(50%);
   }
   nav#nav-header-pc{
     top:36px;
     width:100%;
-    visibility: visible;
     height:auto;
     display:flex;
   }
@@ -483,7 +517,7 @@ img{
     margin-top:-48px;
   }
 }
-@media screen and (min-width:1200px){
+@media only screen and (min-width:1200px){
   #bg{
     background-position: center;
     background-repeat: no-repeat;

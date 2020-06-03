@@ -21,12 +21,18 @@
         </a>
       </div>
       <div id="lang-expand">
-        <i class="fas fa-globe"></i>
-        <select name="language" id="language">
-          <option value="English">EN</option>
-          <option value="Spanish">ES</option>
-          <option value="Korean">KO</option>
-        </select>
+        <div id="lang-expand-visible">
+          <i class="fas fa-globe"></i>
+          <span id="selected-language">EN</span>
+          <span id="language-dropdown-caret">&#9660;</span>
+        </div>
+        <div id="language-dropdown-menu">
+          <ul>
+            <li data-value="English">EN</li>
+            <li data-value="Spanish">ES</li>
+            <li data-value="Korean">KO</li>
+          </ul>
+        </div>
       </div>
       <div id="menu-expand">
         <i class="fas fa-bars"></i>

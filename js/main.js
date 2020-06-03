@@ -18,6 +18,10 @@ function onLoad(){
   for(let i = 0; i < blackouts.length; i++){
     blackouts[i].addEventListener('click', openOrCloseMobileNavMenu)
   }
+  window.addEventListener('resize', onResize)
+}
+function onResize(){
+  
 }
 function colorizeParagraphs(){
   let paragraphs = document.querySelectorAll("p")
