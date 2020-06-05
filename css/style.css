@@ -216,6 +216,9 @@ main{
 .main-text{
   padding: 16px;
 }
+.main-text img{
+  margin-bottom:16px; 
+}
 h4{
   color:var(--yellow);
   text-align: center;
@@ -503,6 +506,10 @@ img{
   .main-text p{
     padding-left:32px;
     padding-right:32px;
+  }
+  .main-text img{
+    max-width: 50%;
+    margin-right: 16px;
   }
   h5{
     font-size:48px;

@@ -1,4 +1,5 @@
 <?php
+  $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
   $page_hero_image = "twelvebythree1";
   $page_header = "Menu";
   include_once 'inc/header.php';?>

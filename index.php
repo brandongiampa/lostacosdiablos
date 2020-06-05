@@ -1,4 +1,5 @@
 <?php
+  $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
   $page_header = "Welcome to Los Tacos Diablos!";
   $page_hero_image = "tacos2-blur";
   include_once 'inc/header.php';
