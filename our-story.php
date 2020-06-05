@@ -1,12 +1,46 @@
 <?php
+  $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
+
+  include_once 'database/db.php';
+  $conn = Database::connectReadDB();
+
+  switch($document_language){
+    case "en":{$language_addon = "english"; break;}
+    case "es":{$language_addon = "spanish"; break;}
+    case "ko":{$language_addon = "korean"; break;}
+  }
+
+  $page_title = "Our Story";
+
+  $stmt = $conn->prepare('SELECT title, header_title, html_' . $language_addon . ' FROM ltd_page_content WHERE title = :title LIMIT 1');
+  $stmt->bindParam(':title', $page_title , PDO::PARAM_STR);
+  $stmt->execute();
+
+  $row = $stmt->fetch(PDO::FETCH_OBJ);
+
+  $title = $row->title;
+  $header_title = $row->header_title;
+
+  if(isset($row->html_korean)){
+    $page_html = $row->html_korean;
+  }
+  else if (isset($row->html_spanish)){
+    $page_html = $row->html_spanish;
+  }
+  else if(isset($row->html_english)){
+    $page_html = $row->html_english;
+  }
+  else {
+    $page_html = "There is no page content to display. Please notify the site administrator.";
+  }
+?>
+
+<?php
+
   $page_hero_image = "twelvebythree2";
   $page_header = "Our Story";
   include_once 'inc/header.php';?>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, pariatur! Assumenda reprehenderit <a href="#">enim saepe</a> nostrum officia placeat quisquam repellat cum quaerat nemo totam dolorem aliquam, minus accusantium sit deserunt beatae magni, dolore atque error aut, omnis! Numquam?</p>
-        <p>Ipsum dolor sit amet, consectetur <a href="#">adipisicing elit</a>. Temporibus quisquam vitae autem omnis nostrum non ab, eius id atque assumenda corrupti eum incidunt quidem aperiam ipsam neque molestiae eveniet sit ea beatae. Iste quos obcaecati veniam, nemo temporibus. Possimus perferendis animi minima?</p>
-        <p>Dolor sit amet, consectetur adipisicing elit. Voluptate autem magnam dolorem suscipit amet facere porro vero illum, ad. Hic omnis illum, fugit nihil, voluptates esse expedita est quaerat laborum officia nemo facilis labore cupiditate.</p>
-        <p>Sit amet, consectetur adipisicing elit. Aliquid qui, nam quidem eaque est, alias. Nihil non iure dolorem sit enim repudiandae.</p>
-        <p>Consectetur adipisicing elit. Id expedita, eveniet. Nostrum inventore cumque laboriosam consequatur, earum commodi eaque impedit nisi beatae quidem perspiciatis ipsa, odio alias ducimus error sit, maiores dignissimos deserunt ad reiciendis!</p>
+    <?php echo $page_html;?>
       </div>
     </main>
 <?php include_once 'inc/footer.php';?>
