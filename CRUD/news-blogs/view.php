@@ -59,7 +59,7 @@
     <label for="date"><b>Date</b></label><br>
     <div id="date"><?php echo $date;?></div>
     <label class="mt-3" for="image-path"><b>Image Path</b></label><br>
-    <div id="image-path"><?php echo $img_path;?>"</div><br>
+    <div id="image-path"><?php echo $img_path;?></div><br>
     <img class="mb-2" src="<?php echo $img_path;?>" alt="IMAGE NOT FOUND" style="max-width:360px;"><br>
     <label class="mt-2" for="language"><b>Language</b></label><br>
     <div id="language"><?php echo $language;?></div><br>
