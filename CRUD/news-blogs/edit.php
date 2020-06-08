@@ -7,7 +7,7 @@
 
   if(isset($_POST['edit-page'])){
     $date = date("Y-m-d H:i:s", strtotime($_POST['date']));
-    echo $date;
+    $title = ucwords($_POST['title']);
 
     if(isset($_FILES['file'])&&$_FILES['file']['name']!==""){
         $file = $_FILES['file'];
@@ -22,8 +22,6 @@
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         //check if is real image or fake
         $check = getimagesize($_FILES["file"]["tmp_name"]);
-
-
 
         if($check===false){
           $uploadOk = 0;
@@ -54,7 +52,7 @@
             try{
               $conn = Database::connectWriteDB();
               $stmt = $conn->prepare('UPDATE ltd_news_blogs SET title = :title, img_path = :img_path, language = :language, html = :html, timestamp = :timestamp WHERE id = :id');
-              $stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
+              $stmt->bindParam(':title', $title, PDO::PARAM_STR);
               $stmt->bindParam(':img_path', $absolute_path, PDO::PARAM_STR);
               $stmt->bindParam(':language', $_POST['language'], PDO::PARAM_STR);
               $stmt->bindParam(':html', $_POST['html'], PDO::PARAM_STR);
@@ -79,9 +77,10 @@
         }
     }
     else {
+
       $conn = Database::connectWriteDB();
       $stmt = $conn->prepare('UPDATE ltd_news_blogs SET title = :title, img_path = :img_path, language = :language, html = :html, timestamp = :timestamp WHERE id = :id');
-      $stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
+      $stmt->bindParam(':title', $title, PDO::PARAM_STR);
       $stmt->bindParam(':img_path', $_POST['image-path'], PDO::PARAM_STR);
       $stmt->bindParam(':language', $_POST['language'], PDO::PARAM_STR);
       $stmt->bindParam(':html', $_POST['html'], PDO::PARAM_STR);
@@ -130,7 +129,7 @@
 <body>
   <div class="container p-4">
     <?php echo $message;?>
-    <form action="<?php echo $_SERVER['PHP_SELF'].'?id='.$id;?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo $_SERVER['PHP_SELF'].'?id='.$id;?>" method="post" enctype="multipart/form-data" onsubmit="document.getElementById('image-path').disabled=false">
       <a href="index.php" class="btn btn-primary">&larr;Back to Index</a>
       <h1 class="text-center">Edit News Blog</h1>
       <p class="text-right"><a href="view.php?id=<?php echo $id;?>" class="btn btn-info">View Entry</a></p>
@@ -147,8 +146,8 @@
       </div>
       <label class="mt-3" for="language"><b>Language</b></label><span class="text-danger"><i> *Required</i></span><br>
       <select name="language" id="language">
-        <option value="English">English</option>
-        <option value="Spanish">Spanish</option>
+        <option value="English"<?php if ($language==='English' || $language === ""){echo "selected";}?>>English</option>
+        <option value="Spanish"<?php if ($language==='Spanish'){echo "selected";}?>>Spanish</option>
       </select><br>
       <label class="mt-3" for="html"><b>HTML</b></label><br>
       <textarea name="html"class="form-control"id="html"cols="30"rows="20"><?php echo $html;?></textarea><br>

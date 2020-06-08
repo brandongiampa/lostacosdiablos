@@ -1,7 +1,7 @@
 <?php
   include_once '../../inc/globals.php';
   $message = "";
-  $title = isset($_POST['title']) ? $_POST['title'] : "";
+  $title = isset($_POST['title']) ? ucwords($_POST['title']) : "";
   $language = isset($_POST['language']) ? $_POST['language'] : "English";
   $html = isset($_POST['html']) ? $_POST['html'] : "";
 
@@ -54,6 +54,9 @@
           $stmt->bindParam(':html', $html, PDO::PARAM_STR);
           $stmt->execute();
           $message .= '<div class="container"><div class="alert alert-success">Your entry has been successfully added.</div></div>';
+          unset($title);
+          unset($language);
+          unset($html);
         }
         catch(PDOException $ex){
           $uploadOk = 0;
