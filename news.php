@@ -2,105 +2,59 @@
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
   $page_hero_image = "news";
   $page_header = "News";
-  include_once 'inc/header.php';?>
+  include_once 'inc/header.php';
+  include_once 'database/db.php';
+
+  //sql query
+  $upperLimit = 12;
+  $db = Database::connectReadDB();
+  $language = $document_language === "es" ? "Spanish" : "English";
+  $query = "SELECT * FROM `ltd_news_blogs` WHERE `language` = :language LIMIT :upperLimit";
+  $stmt = $db->prepare($query);
+  $stmt->bindParam(':upperLimit', $upperLimit, PDO::PARAM_INT);
+  $stmt->bindParam(':language', $language, PDO::PARAM_STR);
+  $stmt->execute();
+  ?>
   </div>
   <div class="news-items">
-    <div class="news-item">
-      <div class="news-item-header">
-        <h2>We are on Postmates!</h2>
-        <div class="news-item-date">May 31, 2020</div>
-      </div>
-      <div class="news-item-body">
-        <div class="news-item-img">
-          <a href="news-item.php">
-            <img src="img/original/postmates.jpg" alt="">
-          </a>
+    <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)):?>
+    <?php
+      $title = $row['title'];
+      $titleExplode = explode($title, " ");
+      $dashedTitle = "";
+
+      for($i=0;$i<sizeof($titleExplode)-1;$i++){
+        $dashedTitle .= $titleExplode[$i];
+        $dashedTitle .= '-';
+      }
+      $dashedTitle .= $titleExplode[sizeof($titleExplode)-1];
+
+      $date_unformatted = date_create(substr($row['timestamp'], 0, 10));
+      $date = date_format($date_unformatted, "n/j/Y");
+
+      $imgPath = $row['img_path'];
+
+      $excerptLength = 60;
+      $excerpt = strlen(strip_tags($row['html'])) < $excerptLength ? strip_tags($row['html']) : substr(strip_tags($row['html']), 0, $excerptLength-3) . "...";
+    ?>
+      <div class="news-item">
+        <div class="news-item-header">
+          <h2><?php echo $title?></h2>
+          <div class="news-item-date"><?php echo $date;?></div>
         </div>
-        <div class="news-item-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias architecto, blanditiis eius, reprehenderit reiciendis voluptas iusto magnam tenetur nostrum quos optio adipisci facere suscipit, cumque...
-        </div>
-      </div>
-    </div>
-    <div class="news-item">
-      <div class="news-item-header">
-        <h2>Los Rojos estan Aqui!</h2>
-        <div class="news-item-date">May 31, 2020</div>
-      </div>
-      <div class="news-item-body">
-        <div class="news-item-img">
-          <a href="news-item.php">
-            <img src="img/original/rojos.jpg" alt="">
-          </a>
-        </div>
-        <div class="news-item-text">
-          POP UP ALERT! Rojos Hot Chicken at @lostacosamigos 4pm-9pm or Sellout. This Saturday Jan 25th. @rojoshotchicken @lostacosamigos #tennessechicken #friedchicken #ochotchicken #ocfriedchicken #lahotchicken #lafriedchicken #anaheimhotchicken #anaheimfriedchicken #anaheimfoodies #ocfoodies #lafoodies @mexi_papa_adventures @mrbiggsmenu...
-        </div>
-      </div>
-    </div>
-    <div class="news-item">
-      <div class="news-item-header">
-        <h2>We are on Postmates!</h2>
-        <div class="news-item-date">May 31, 2020</div>
-      </div>
-      <div class="news-item-body">
-        <div class="news-item-img">
-          <a href="news-item.php">
-            <img src="img/original/postmates.jpg" alt="">
-          </a>
-        </div>
-        <div class="news-item-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias architecto, blanditiis eius, reprehenderit reiciendis voluptas iusto magnam tenetur nostrum quos optio adipisci facere suscipit, cumque...
+        <div class="news-item-body">
+          <div class="news-item-img">
+            <a href="news/<?php echo $dashedTitle;?>">
+              <img src="<?php echo $imgPath;?>" alt="IMAGE NOT FOUND">
+            </a>
+          </div>
+          <div class="news-item-text">
+            <?php echo $excerpt;?>
+            <a class="btn" href="news/<?php echo $dashedTitle;?>">READ MORE</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="news-item">
-      <div class="news-item-header">
-        <h2>Los Rojos estan Aqui!</h2>
-        <div class="news-item-date">May 31, 2020</div>
-      </div>
-      <div class="news-item-body">
-        <div class="news-item-img">
-          <a href="news-item.php">
-            <img src="img/original/rojos.jpg" alt="">
-          </a>
-        </div>
-        <div class="news-item-text">
-          POP UP ALERT! Rojos Hot Chicken at @lostacosamigos 4pm-9pm or Sellout. This Saturday Jan 25th. @rojoshotchicken @lostacosamigos #tennessechicken #friedchicken #ochotchicken #ocfriedchicken #lahotchicken #lafriedchicken #anaheimhotchicken #anaheimfriedchicken #anaheimfoodies #ocfoodies #lafoodies @mexi_papa_adventures @mrbiggsmenu...
-        </div>
-      </div>
-    </div>
-    <div class="news-item">
-      <div class="news-item-header">
-        <h2>We are on Postmates!</h2>
-        <div class="news-item-date">May 31, 2020</div>
-      </div>
-      <div class="news-item-body">
-        <div class="news-item-img">
-          <a href="news-item.php">
-            <img src="img/original/postmates.jpg" alt="">
-          </a>
-        </div>
-        <div class="news-item-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias architecto, blanditiis eius, reprehenderit reiciendis voluptas iusto magnam tenetur nostrum quos optio adipisci facere suscipit, cumque...
-        </div>
-      </div>
-    </div>
-    <div class="news-item">
-      <div class="news-item-header">
-        <h2>Los Rojos estan Aqui!</h2>
-        <div class="news-item-date">May 31, 2020</div>
-      </div>
-      <div class="news-item-body">
-        <div class="news-item-img">
-          <a href="news-item.php">
-            <img src="img/original/rojos.jpg" alt="">
-          </a>
-        </div>
-        <div class="news-item-text">
-          POP UP ALERT! Rojos Hot Chicken at @lostacosamigos 4pm-9pm or Sellout. This Saturday Jan 25th. @rojoshotchicken @lostacosamigos #tennessechicken #friedchicken #ochotchicken #ocfriedchicken #lahotchicken #lafriedchicken #anaheimhotchicken #anaheimfriedchicken #anaheimfoodies #ocfoodies #lafoodies @mexi_papa_adventures @mrbiggsmenu...
-        </div>
-      </div>
-    </div>
+    <?php endwhile;?>
   </div>
 </main>
 <?php include_once 'inc/footer.php';?>
