@@ -31,7 +31,6 @@
           <ul>
             <li data-selectedlanguage="en">EN</li>
             <li data-selectedlanguage="es">ES</li>
-            <li data-selectedlanguage="ko">KO</li>
           </ul>
         </div>
       </div>
