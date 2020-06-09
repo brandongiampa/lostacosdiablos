@@ -15,6 +15,6 @@
   </div>
 </footer>
 </div>
-<script src="js/main.js"></script>
+<script src="<?php echo $document_root_path;?>js/main.js"></script>
 </body>
 </html>

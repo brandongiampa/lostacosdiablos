@@ -34,7 +34,6 @@
           $dashedTitle .= '-';
         }
         $dashedTitle .= $titleExplode[sizeof($titleExplode)-1];
-
         $date_unformatted = date_create(substr($row['timestamp'], 0, 10));
         $date = date_format($date_unformatted, "n/j/Y");
 
@@ -50,7 +49,7 @@
           </div>
           <div class="news-item-body">
             <div class="news-item-img">
-              <a href="news/<?php echo $dashedTitle;?>">
+              <a href="<?php echo $document_root_path;?>news-item/<?php echo $dashedTitle;?>">
                 <img src="<?php echo $imgPath;?>" alt="IMAGE NOT FOUND">
               </a>
             </div>
