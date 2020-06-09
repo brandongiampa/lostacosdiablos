@@ -1,93 +1,77 @@
 <?php
   include_once '../../inc/globals.php';
-
-  $message = "";
+  include_once '../classes/NewsBlog.php';
+  include_once '../functions/functions.php';
 
   include_once '../../database/db.php';
 
   if(isset($_POST['edit-page'])){
-    $date = date("Y-m-d H:i:s", strtotime($_POST['date']));
-    $title = ucwords($_POST['title']);
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $img_path = $_POST['image-path'];
+    $html = $_POST['html'];
+    $language = $_POST['language'];
 
-    if(isset($_FILES['file'])&&$_FILES['file']['name']!==""){
-        $file = $_FILES['file'];
-        $target_directory =  "../../uploads/";
-        $target_file = $target_directory . basename($_FILES["file"]["name"]);
+    $uploadOk = true;
 
-        //set absolute path for database
-        $absolute_directory = "http://192.168.1.232:8080/lostacosamigos/uploads/";
-        $absolute_path = $absolute_directory . basename($_FILES["file"]["name"]);
+    if($_FILES['file']['name']!==""){
+      $extension = strrchr($_FILES['file']['name'], '.');
+      $new_basename = uniqid('', true) . $extension;
+      $target_file = '../../uploads/' . $new_basename;
+      $absolute_path = $document_root_path . 'uploads/' . $new_basename;
 
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        //check if is real image or fake
-        $check = getimagesize($_FILES["file"]["tmp_name"]);
-
-        if($check===false){
-          $uploadOk = 0;
-          $message .= '<div class="container">';
-            $message .= '<div class="alert alert-danger">';
-            $message .= 'The file uploaded is not an image file. Please try again.';
-            $message .= '</div>';
-          $message .= '</div>';
+      $checkFile = getimagesize($_FILES['file']['tmp_name']);
+      if ($checkFile===false){
+        $uploadOk = false;
+        sendAlertDanger("The file you uploaded is not an image file.");
+      }
+      if($_FILES['file']['size']>1000000){
+        $uploadOk = false;
+        sendAlertDanger("File must be less than 1MB.");
+      }
+      if($uploadOk){
+        if(!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+          sendAlertDanger("There was an error uploading your file. Please try again.");
+          $uploadOk = false;
+          echo $target_file .'<br>';
+          echo $absolute_path;
         }
-        if($_FILES["file"]["size"]>500000){
-          $uploadOk = 0;
-          $message .= '<div class="container">';
-            $message .= '<div class="alert alert-danger">';
-            $message .= 'Image file size is too large. Compress it or use something smaller, you moron.';
-            $message .= '</div>';
-          $message .= '</div>';
-        }
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "jpeg"){
-          $uploadOk = 0;
-          $message .= '<div class="container">';
-            $message .= '<div class="alert alert-danger">';
-            $message .= 'Only files of type "jpg", "jpeg", "gif" and "png" are valid for upload.';
-            $message .= '</div>';
-          $message .= '</div>';
-        }
-        if($uploadOk===1){
-          if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
-            try{
-              $conn = Database::connectWriteDB();
-              $stmt = $conn->prepare('UPDATE ltd_news_blogs SET title = :title, img_path = :img_path, language = :language, html = :html, timestamp = :timestamp WHERE id = :id');
-              $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-              $stmt->bindParam(':img_path', $absolute_path, PDO::PARAM_STR);
-              $stmt->bindParam(':language', $_POST['language'], PDO::PARAM_STR);
-              $stmt->bindParam(':html', $_POST['html'], PDO::PARAM_STR);
-              $stmt->bindParam(':timestamp', $date, PDO::PARAM_STR);
-              $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-              $stmt->execute();
-              $message .= '<div class="container"><div class="alert alert-success">Your entry has been successfully edited.</div></div>';
-            }
-            catch(PDOException $ex){
-              $uploadOk = 0;
-              $message .= '<div class="container"><div class="alert alert-warning">There was an error connecting to the database. Please try again. <br>' . $ex->getMessage() . '</div></div>';
-            }
-          }
-          else {
-            $uploadOk = 0;
-            $message .= '<div class="container">';
-              $message .= '<div class="alert alert-danger">';
-              $message .= 'There was an error uploading your file. Please try again.';
-              $message .= '</div>';
-            $message .= '</div>';
-          }
-        }
+      }
     }
-    else {
+    if($uploadOk){
+      try{
+        $newsBlog = new NewsBlog($id, $title);
+        $newsBlog->setImgPath($absolute_path);
+        $newsBlog->setHTML($html);
+        $newsBlog->setLanguage($language);
 
-      $conn = Database::connectWriteDB();
-      $stmt = $conn->prepare('UPDATE ltd_news_blogs SET title = :title, img_path = :img_path, language = :language, html = :html, timestamp = :timestamp WHERE id = :id');
-      $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-      $stmt->bindParam(':img_path', $_POST['image-path'], PDO::PARAM_STR);
-      $stmt->bindParam(':language', $_POST['language'], PDO::PARAM_STR);
-      $stmt->bindParam(':html', $_POST['html'], PDO::PARAM_STR);
-      $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-      $stmt->bindParam(':timestamp', $date, PDO::PARAM_STR);
-      $stmt->execute();
-      $message .= '<div class="container"><div class="alert alert-success">Your entry has been successfully edited.</div></div>';
+        $title = $newsBlog->getTitle();
+        $slug = $newsBlog->getSlug();
+        $img_path = $newsBlog->getImgPath();
+        $html = $newsBlog->getHTML();
+        $language = $newsBlog->getLanguage();
+        $date = $newsBlog->getDate();
+
+        $db = Database::connectWriteDB();
+        $query = "UPDATE `ltd_news_blogs` SET title = :title, slug = :slug, img_path = :img_path, html = :html, language = :language, timestamp = :datetime WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+        $stmt->bindParam(':img_path', $img_path, PDO::PARAM_STR);
+        $stmt->bindParam(':html', $html, PDO::PARAM_STR);
+        $stmt->bindParam(':language', $language, PDO::PARAM_STR);
+        $stmt->bindParam(':datetime', $date, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        sendAlertSuccess("Your entry has been successfully submitted.");
+        $title = $img_path = $html = $language = "";
+      }
+      catch(NewsBlogException $ex){
+        sendAlertDanger($ex);
+      }
+      catch(PDOException $ex){
+        sendAlertDanger($ex->getMessage());
+      }
     }
   }
   try{
@@ -105,7 +89,7 @@
   }
   catch(PDOException $ex){
     $hadDatabaseError = true;
-    $message = "There has been a database error: " . $ex->getMessage();
+    sendAlertDanger("There has been a database error. Please try again, or contact site administrator if the issue persists.");
   }
 ?>
 <?php
@@ -128,7 +112,6 @@
 </head>
 <body>
   <div class="container p-4">
-    <?php echo $message;?>
     <form action="<?php echo $_SERVER['PHP_SELF'].'?id='.$id;?>" method="post" enctype="multipart/form-data" onsubmit="document.getElementById('image-path').disabled=false">
       <a href="index.php" class="btn btn-primary">&larr;Back to Index</a>
       <h1 class="text-center">Edit News Blog</h1>

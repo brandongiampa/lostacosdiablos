@@ -1,77 +1,75 @@
 <?php
   include_once '../../inc/globals.php';
-  $message = "";
-  $title = isset($_POST['title']) ? ucwords($_POST['title']) : "";
-  $language = isset($_POST['language']) ? $_POST['language'] : "English";
-  $html = isset($_POST['html']) ? $_POST['html'] : "";
-
+  include_once '../classes/NewsBlog.php';
+  include_once '../functions/functions.php';
   include_once '../../database/db.php';
 
   if(isset($_POST['add-page'])){
+    $title = $_POST['title'];
+    $html = $_POST['html'];
+    $language = $_POST['language'];
 
-    $file = $_FILES['file'];
-    $target_directory =  "../../uploads/";
-    $target_file = $target_directory . basename($_FILES["file"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    //set absolute path for database
-    $absolute_directory = "http://192.168.1.232:8080/lostacosamigos/uploads/";
-    $absolute_path = $absolute_directory . basename($_FILES["file"]["name"]);
-    //check if is real image or fake
-    $check = getimagesize($_FILES["file"]["tmp_name"]);
-    if($check===false){
-      $uploadOk = 0;
-      $message .= '<div class="container">';
-        $message .= '<div class="alert alert-danger">';
-        $message .= 'The file uploaded is not an image file. Please try again.';
-        $message .= '</div>';
-      $message .= '</div>';
-    }
-    if($_FILES["file"]["size"]>1000000){
-      $uploadOk = 0;
-      $message .= '<div class="container">';
-        $message .= '<div class="alert alert-danger">';
-        $message .= 'Image file size is too large. Compress it or use something smaller, you moron.';
-        $message .= '</div>';
-      $message .= '</div>';
-    }
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "jpeg"){
-      $uploadOk = 0;
-      $message .= '<div class="container">';
-        $message .= '<div class="alert alert-danger">';
-        $message .= 'Only files of type "jpg", "jpeg", "gif" and "png" are valid for upload.';
-        $message .= '</div>';
-      $message .= '</div>';
-    }
-    if($uploadOk===1){
-      if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
-        try{
-          $conn = Database::connectWriteDB();
-          $stmt = $conn->prepare('INSERT INTO ltd_news_blogs (title, img_path, language, html, timestamp) VALUES (:title, :img_path, :language, :html, NOW() )');
-          $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-          $stmt->bindParam(':img_path', $absolute_path, PDO::PARAM_STR);
-          $stmt->bindParam(':language', $language, PDO::PARAM_STR);
-          $stmt->bindParam(':html', $html, PDO::PARAM_STR);
-          $stmt->execute();
-          $message .= '<div class="container"><div class="alert alert-success">Your entry has been successfully added.</div></div>';
-          unset($title);
-          unset($language);
-          unset($html);
-        }
-        catch(PDOException $ex){
-          $uploadOk = 0;
-          $message .= '<div class="container"><div class="alert alert-warning">There was an error connecting to the database. Please try again. <br>' . $ex->getMessage() . '</div></div>';
+    $uploadOk = true;
+
+    if($_FILES['file']['name']!==""){
+      $extension = strrchr($_FILES['file']['name'], '.');
+      $new_basename = uniqid('', true) . $extension;
+      $target_file = '../../uploads/' . $new_basename;
+      $absolute_path = $document_root_path . 'uploads/' . $new_basename;
+
+      $checkFile = getimagesize($_FILES['file']['tmp_name']);
+      if ($checkFile===false){
+        $uploadOk = false;
+        sendAlertDanger("The file you uploaded is not an image file.");
+      }
+      if($_FILES['file']['size']>1000000){
+        $uploadOk = false;
+        sendAlertDanger("File must be less than 1MB.");
+      }
+      if($uploadOk){
+        if(!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+          sendAlertDanger("There was an error uploading your file. Please try again.");
+          $uploadOk = false;
+          echo $target_file .'<br>';
+          echo $absolute_path;
         }
       }
-      else {
-        $uploadOk = 0;
-        $message .= '<div class="container">';
-          $message .= '<div class="alert alert-danger">';
-          $message .= 'There was an error uploading your file. Please try again.';
-          $message .= '</div>';
-        $message .= '</div>';
+    }
+    if($uploadOk){
+      try{
+        $newsBlog = new NewsBlog(null, $title);
+        $newsBlog->setImgPath($absolute_path);
+        $newsBlog->setHTML($html);
+        $newsBlog->setLanguage($language);
+
+        $title = $newsBlog->getTitle();
+        $slug = $newsBlog->getSlug();
+        $img_path = $newsBlog->getImgPath();
+        $html = $newsBlog->getHTML();
+        $language = $newsBlog->getLanguage();
+
+        $db = Database::connectWriteDB();
+        $query = "INSERT INTO `ltd_news_blogs`(title, slug, img_path, html, language, timestamp) VALUES (:title, :slug, :img_path, :html, :language, now())";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+        $stmt->bindParam(':img_path', $img_path, PDO::PARAM_STR);
+        $stmt->bindParam(':html', $html, PDO::PARAM_STR);
+        $stmt->bindParam(':language', $language, PDO::PARAM_STR);
+        $stmt->execute();
+        sendAlertSuccess("Your entry has been successfully submitted.");
+        $title = $img_path = $html = $language = "";
+      }
+      catch(NewsBlogException $ex){
+        sendAlertDanger($ex);
+      }
+      catch(PDOException $ex){
+        sendAlertDanger($ex->getMessage());
       }
     }
+  }
+  else{
+    $title = $img_path = $html = $language = "";
   }
 ?>
 <!DOCTYPE html>
@@ -86,7 +84,6 @@
 </head>
 <body>
   <div class="container p-4">
-    <?php echo $message;?>
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
       <a href="index.php" class="btn btn-primary">&larr;Back to Index</a>
       <h1 class="text-center">Add News Blog</h1>
