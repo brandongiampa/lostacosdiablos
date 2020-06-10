@@ -36,7 +36,7 @@
   --orange:#EC9D13;
   --yellow:#CFEC13;
   --green:#63EC13;
-  --blackMain:#111;
+  --blackMain:#000;
   --whiteMain:#eee;
 }
 html, body {
@@ -55,11 +55,11 @@ html, body {
   box-shadow: -1px -1px 2px #333;
 }
 header{
-  background-color: inherit;
+  background-color: var(--blackMain);
   z-index:2;
   position:relative;
   height: 80px;
-  padding-top:16px;
+  padding-top:8px;
   padding-bottom:16px;
   border-bottom: 1px var(--whiteMain) solid;
 }
@@ -188,7 +188,7 @@ li .vacer-text{
   font-size: 29px;
 }
 a{
-  color:white;
+  color:var(--yellow);
   text-decoration:none;
 }
 #ctas{
@@ -302,6 +302,11 @@ ul{
   text-align: center;
   list-style: none;
 }
+.foot-link{
+  display:flex;
+  justify-content: center;
+  padding: 36px;
+}
 .news-item, .news-item-page{
   padding-bottom:32px;
 }
@@ -386,6 +391,9 @@ footer{
   max-width:1200px;
   margin:auto;
   background-color:inherit;
+}
+footer a{
+  color:var(--whiteMain);
 }
 footer .blackout{
   top:-2px;
@@ -481,7 +489,7 @@ img{
     transform:translateX(50%);
   }
   nav#nav-header-pc{
-    top:36px;
+    top:24px;
     width:100%;
     height:auto;
     display:flex;
@@ -499,9 +507,15 @@ img{
     flex:20%;
     display:flex;
     justify-content: center;
+    background-color:var(--blackMain);
+    padding: 16px 0;
+  }
+  #branding-pc a img{
+
+
   }
   #hero-image{
-    padding:16px 180px;
+    padding:48px 180px 16px 180px;
   }
   .page-header{
     margin-bottom:32px;
@@ -513,6 +527,9 @@ img{
   .main-text img{
     max-width: 50%;
     margin-right: 16px;
+  }
+  .main-text .news-item-img img{
+    max-width:100%;
   }
   h5{
     font-size:48px;
