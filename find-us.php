@@ -1,6 +1,6 @@
 <?php
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
-  $page_hero_image = "findus2";
+  $page_hero_image = "img/large/findus2.jpg";
   $page_header = "Find Us";
   include_once 'inc/header.php';?>
         <!--<p>Being a business on wheels, we take advantage of the situation and try to get some quality time on the beach. Our schedule is as follows:</p>

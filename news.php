@@ -1,14 +1,14 @@
 <?php
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
-  $page_hero_image = "news";
+  $page_hero_image = "img/large/news.jpg";
   $page_header = "News";
   include_once 'inc/header.php';
   include_once 'database/db.php';
 
   //sql query
-  $upperLimit = 12;
   $db = Database::connectReadDB();
   $language = $document_language === "es" ? "Spanish" : "English";
+  $upperLimit = 12;
   $query = "SELECT * FROM `ltd_news_blogs` WHERE `language` = :language ORDER BY timestamp DESC LIMIT :upperLimit";
   $stmt = $db->prepare($query);
   $stmt->bindParam(':upperLimit', $upperLimit, PDO::PARAM_INT);
@@ -26,14 +26,7 @@
     else {
       while($row = $stmt->fetch(PDO::FETCH_ASSOC)):
         $title = $row['title'];
-        $titleExplode = explode($title, " ");
-        $dashedTitle = "";
-
-        for($i=0;$i<sizeof($titleExplode)-1;$i++){
-          $dashedTitle .= $titleExplode[$i];
-          $dashedTitle .= '-';
-        }
-        $dashedTitle .= $titleExplode[sizeof($titleExplode)-1];
+        $slug = $row['slug'];
         $date_unformatted = date_create(substr($row['timestamp'], 0, 10));
         $date = date_format($date_unformatted, "n/j/Y");
 
@@ -49,13 +42,13 @@
           </div>
           <div class="news-item-body">
             <div class="news-item-img">
-              <a href="<?php echo $document_root_path;?>news-item/<?php echo $dashedTitle;?>">
+              <a href="<?php echo $document_root_path;?>news-item/<?php echo $slug;?>">
                 <img src="<?php echo $imgPath;?>" alt="IMAGE NOT FOUND">
               </a>
             </div>
             <div class="news-item-text">
               <?php echo $excerpt;?>
-              <a class="link" href="news/<?php echo $dashedTitle;?>">READ MORE</a>
+              <a class="link" href="<?php echo $document_root_path;?>news-item/<?php echo $slug;?>">READ MORE</a>
             </div>
           </div>
         </div>

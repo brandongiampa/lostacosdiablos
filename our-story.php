@@ -7,7 +7,6 @@
   switch($document_language){
     case "en":{$language_addon = "english"; break;}
     case "es":{$language_addon = "spanish"; break;}
-    case "ko":{$language_addon = "korean"; break;}
   }
 
   $page_title = "Our Story";
@@ -21,10 +20,7 @@
   $title = $row->title;
   $header_title = $row->header_title;
 
-  if(isset($row->html_korean)){
-    $page_html = $row->html_korean;
-  }
-  else if (isset($row->html_spanish)){
+  if (isset($row->html_spanish)){
     $page_html = $row->html_spanish;
   }
   else if(isset($row->html_english)){
@@ -37,7 +33,7 @@
 
 <?php
 
-  $page_hero_image = "twelvebythree2";
+  $page_hero_image = "img/large/twelvebythree2.jpg";
   $page_header = "Our Story";
   include_once 'inc/header.php';?>
     <?php echo $page_html;?>

@@ -83,7 +83,7 @@
     <main>
       <div class="blackout"></div>
       <div id="hero-image">
-        <img src="<?php echo $document_root_path;?>img/large/<?php echo $page_hero_image;?>.jpg" alt="">
+        <img src="<?php echo $page_hero_image;?>" alt="">
       </div>
       <div class="main-text">
         <div class="page-header">

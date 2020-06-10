@@ -217,7 +217,7 @@ main{
   padding: 16px;
 }
 .main-text img{
-  margin-bottom:16px; 
+  margin-bottom:16px;
 }
 h4{
   color:var(--yellow);
@@ -338,7 +338,10 @@ ul{
   font-size:24px;
 }
 a.link-prev.disabled, a.link-next.disabled{
-  opacity:.5;
+  opacity:.3;
+}
+a.link-prev.disabled:hover, a.link-next.disabled:hover{
+  cursor: default;
 }
 h5{
   text-shadow: -1px -1px #222;
