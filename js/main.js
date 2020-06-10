@@ -42,10 +42,20 @@ function setVariables(){
 }
 function changeLanguage(e){
   let selectedLanguage = e.target.dataset.selectedlanguage
-  document.cookie = "documentlanguage=" + selectedLanguage
-  setTimeout(()=>{
-    window.location.replace(window.location.href);
-  },0)
+  document.cookie = "documentlanguage=" + selectedLanguage + ";path=/lostacosamigos"
+  document.cookie = "documentlanguage=" + selectedLanguage + ";path=/lostacosamigos/news-item"
+  let footerFinder = document.getElementsByClassName("news-page-footer")
+  if(footerFinder.length>0){
+    setTimeout(()=>{
+      window.location.href = "http://192.168.1.232:8080/lostacosamigos/news"
+    },0)
+  }
+  else{
+    setTimeout(()=>{
+      window.location.replace(window.location.href)
+    })
+  }
+
 }
 function openOrCloseLanguageDropdown(e){
   console.log('ffff')
@@ -218,21 +228,4 @@ function fontify(query){
     }
     elementArray[i].innerHTML = outputString
   }
-  /*
-  let listItems = document.querySelectorAll(query)
-  for(let i = 0; i < listItems.length; i++){
-    let innerText = listItems[i].innerHTML
-    let individualWords = innerText.split(" ")
-    let outputString = ""
-    for(let j = 0; j < individualWords.length; j++){
-      let str = individualWords[j]
-      outputString += '<span class="pointed-text">'
-      outputString += str.substring(0, 1)
-      outputString += "</span>"
-      outputString += '<span class="vacer-text">'
-      outputString += str.substring(1, str.length)
-      outputString += "</span> "
-    }
-    listItems[i].innerHTML = outputString
-  }*/
 }
