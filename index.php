@@ -37,7 +37,6 @@
   include_once 'inc/header.php';?>
     <?php echo $page_html;?>
   </div>
-  <h1>News</h1>
   <?php
   $upperLimit = 3;
   $language = $document_language === "es" ? "Spanish" : "English";
@@ -85,6 +84,8 @@
     }
     ?>
   </div>
-  <a href="<?php echo $document_root_path . 'news/';?>" class="btn">See All News</a>
+  <div class=" foot-link">
+    <a href="<?php echo $document_root_path . 'news/';?>" class="btn btn-red">See All News</a>
+  </div>
 </main>
 <?php include_once 'inc/footer.php';?>

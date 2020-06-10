@@ -48,8 +48,6 @@
   if($id > 0){
     $language = $document_language === "en" ? "English" : "Spanish";
     //get previous article
-    echo $id;
-    echo $language;
     $db = Database::connectReadDB();
     $query = 'SELECT slug FROM ltd_news_blogs WHERE id < :id AND language = :language ORDER BY id DESC LIMIT 1';
     $stmt = $db->prepare($query);
