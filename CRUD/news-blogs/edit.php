@@ -41,7 +41,7 @@
     if($uploadOk){
       try{
         $newsBlog = new NewsBlog($id, $title);
-        $newsBlog->setImgPath($absolute_path);
+        $newsBlog->setImgPath(isset($absolute_path) ? $absolute_path : $_POST['image-path']);
         $newsBlog->setHTML($html);
         $newsBlog->setLanguage($language);
 
