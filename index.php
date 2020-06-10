@@ -1,6 +1,9 @@
 <?php
+  define('CAN_OPEN', true);
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
-
+  $page_hero_image = "img/large/tacos2-blur.jpg";
+  $page_header = "Welcome To Los Tacos Diablos!";
+  include_once 'inc/header.php';
   include_once 'database/db.php';
   $db = Database::connectReadDB();
 
@@ -9,10 +12,8 @@
     case "es":{$language_addon = "spanish"; break;}
   }
 
-  $page_title = "Welcome To Los Tacos Diablos!";
-
   $stmt = $db->prepare('SELECT title, header_title, html_' . $language_addon . ' FROM ltd_page_content WHERE title = :title LIMIT 1');
-  $stmt->bindParam(':title', $page_title , PDO::PARAM_STR);
+  $stmt->bindParam(':title', $page_header , PDO::PARAM_STR);
   $stmt->execute();
 
   $row = $stmt->fetch(PDO::FETCH_OBJ);
@@ -29,12 +30,6 @@
     $page_html = "There is no page content to display. Please notify the site administrator.";
   }
 ?>
-
-<?php
-
-  $page_hero_image = "img/large/tacos2-blur.jpg";
-  $page_header = $title;
-  include_once 'inc/header.php';?>
     <?php echo $page_html;?>
   </div>
   <?php

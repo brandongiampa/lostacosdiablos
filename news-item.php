@@ -1,4 +1,5 @@
 <?php
+  define('CAN_OPEN', true);
   include_once 'database/db.php';
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
   if(isset($_GET['title'])){

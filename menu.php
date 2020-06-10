@@ -1,4 +1,5 @@
 <?php
+  define('CAN_OPEN', true);
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
   $page_hero_image = "img/large/twelvebythree1.jpg";
   $page_header = "Menu";

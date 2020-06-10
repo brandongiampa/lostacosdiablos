@@ -1,6 +1,9 @@
 <?php
+  define('CAN_OPEN', true);
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
-
+  $page_hero_image = "img/large/twelvebythree2.jpg";
+  $page_header = "Our Story";
+  include_once 'inc/header.php';
   include_once 'database/db.php';
   $conn = Database::connectReadDB();
 
@@ -30,12 +33,6 @@
     $page_html = "There is no page content to display. Please notify the site administrator.";
   }
 ?>
-
-<?php
-
-  $page_hero_image = "img/large/twelvebythree2.jpg";
-  $page_header = "Our Story";
-  include_once 'inc/header.php';?>
     <?php echo $page_html;?>
       </div>
     </main>

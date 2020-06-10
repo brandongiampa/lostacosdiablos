@@ -1,4 +1,11 @@
-<?php include_once 'inc/globals.php';?>
+<?php include_once 'globals.php';?>
+<?php
+  //check constant
+  if (!defined('CAN_OPEN')){
+    header('location: ' . $document_root_path);
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="<?php echo $document_language;?>">
 <head>
@@ -18,7 +25,7 @@
     <header>
       <div id="branding-mobile">
         <a href="index.php">
-          <img src="img/logo/newlogocropped.jpg" alt="Los Tacos Diablos">
+          <img src="<?php echo $document_root_path;?>img/logo/newlogocropped.jpg" alt="Los Tacos Diablos">
         </a>
       </div>
       <div id="lang-expand">
