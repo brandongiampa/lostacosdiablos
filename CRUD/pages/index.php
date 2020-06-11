@@ -1,4 +1,5 @@
 <?php
+  define('CAN_OPEN', true);
   include_once '../../database/db.php';
 
   $currentPageNumber = isset($_GET['page']) ? $_GET['page'] : 1;

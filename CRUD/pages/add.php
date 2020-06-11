@@ -1,4 +1,5 @@
 <?php
+  define('CAN_OPEN', true);
   include_once '../../database/db.php';
 
   if(isset($_POST['add-page'])){

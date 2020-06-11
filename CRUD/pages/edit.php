@@ -1,4 +1,6 @@
 <?php
+  define('CAN_OPEN', true);
+
   $errorMessage = "";
 
   include_once '../../database/db.php';
