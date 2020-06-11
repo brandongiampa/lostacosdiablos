@@ -643,7 +643,7 @@ img{
     height: 100%;
     width: 100%;
     position: fixed;
-    background-image:url(../img/large/background2.jpg);
+    background-image:url("https://imgur.com/7s0x1j5.jpg");
   }
   #bg-opaque{
     height: 100%;

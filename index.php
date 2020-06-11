@@ -1,7 +1,7 @@
 <?php
   define('CAN_OPEN', true);
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
-  $page_hero_image = "img/large/tacos2-blur.jpg";
+  $page_hero_image = "https://i.imgur.com/bgL9kWb.jpg";
   $page_header = "Welcome To Los Tacos Diablos!";
   include_once 'inc/header.php';
   include_once 'database/db.php';

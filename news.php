@@ -1,7 +1,7 @@
 <?php
   define('CAN_OPEN', true);
   $document_language = isset($_COOKIE['documentlanguage']) ? $_COOKIE['documentlanguage'] : 'en';
-  $page_hero_image = "img/large/news.jpg";
+  $page_hero_image = "https://i.imgur.com/g7wm2Lp.jpg";
   $page_header = "News";
   include_once 'inc/header.php';
   include_once 'database/db.php';
