@@ -1,5 +1,5 @@
 <?php
-  include_once 'globals.php';
+  include_once 'database/globals.php';
   //check constant
   if (!defined('CAN_OPEN')){
     header('location: ' . $document_root_path);

@@ -31,6 +31,14 @@ function onLoad(){
   }
 
   window.addEventListener('resize', onResize)
+
+  let hasShownCookieNotice = getCookie("hasShownCookieNotice")
+  if (hasShownCookieNotice === "true"){
+    document.getElementById("cookie-notice").style.visibility = "hidden"
+  }
+  else{
+    document.querySelector("#cookie-notice button").addEventListener("click", closeCookieNotice)
+  }
 }
 function onResize(){
 
@@ -39,6 +47,34 @@ function setVariables(){
   documentBody = document.querySelector("body")
   languageExpandVisible = document.getElementById("lang-expand-visible")
   languageDropdownMenu = document.getElementById("language-dropdown-menu")
+}
+function getCookie(cookieName){
+  let name = cookieName + "="
+  let decodedCookie = decodeURIComponent(document.cookie)
+  let cookieSplit = decodedCookie.split(";")
+  for(let i = 0; i < cookieSplit.length; i++){
+
+    let str = cookieSplit[i].trim()
+    if(str.indexOf(name)==0){
+      return str.substring(name.length)
+    }
+    return false
+  }
+
+}
+function setCookie(cookieName, cookieValue){
+  let d = new Date()
+  d.setTime(d.getTime() + (30*24*60*60*1000))
+  let expires = "expires=" + d.toUTCString()
+  let path1 = documentRootPath;
+  let path2 = documentRootPath + "/news-item";
+  document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/lostacosamigos"
+  document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/lostacosamigos/news-item"
+}
+function closeCookieNotice(){
+  let cookieNotice = document.getElementById("cookie-notice")
+  cookieNotice.style.visibility = "hidden"
+  setCookie("hasShownCookieNotice", "true")
 }
 function changeLanguage(e){
   let selectedLanguage = e.target.dataset.selectedlanguage

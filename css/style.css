@@ -26,6 +26,10 @@
 .yellow-text{
   color:var(--yellow);
 }
+.text-center{
+  padding-top:32px;
+  text-align:center;
+}
 .orange-text{
   color:var(--orange);
 }
@@ -58,7 +62,7 @@ header{
   background-color: var(--blackMain);
   z-index:2;
   position:relative;
-  height: 80px;
+  height: 88px;
   padding-top:8px;
   padding-bottom:16px;
   border-bottom: 1px var(--whiteMain) solid;
@@ -67,6 +71,7 @@ header{
   margin-left:16px;
   height: 100%;
   float: left;
+  margin-top:4px;
 }
 #branding-mobile img{
   max-height: 100%;
@@ -136,9 +141,12 @@ nav#nav-header-pc{
   position:absolute;
   bottom:100%;
 }
+nav#nav-header-pc li{
+  position:relative;
+}
 #menu-expand{
   float: right;
-  margin-top: 16px;
+  margin-top: 26px;
   margin-right:16px;
 }
 #menu-expand i {
@@ -213,8 +221,92 @@ a{
 main{
   position: relative;
 }
+#modal-ad{
+  position:fixed;
+
+}
+a #call-to-action{
+  box-shadow:2px 2px 8px #666;
+  position: fixed;
+  bottom: 36px;
+  right:36px;
+  font-size: 52px;
+  background-color:var(--red);
+  padding:11px 14px;
+  z-index:3;
+  color:white;
+  border-radius:50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  animation-name:fadeIn;
+  animation-duration:3s;
+  animation-iteration-count:1;
+}
+#call-to-action img{
+  max-width:52px;
+  padding: 12px 0px 0 0px;
+}
+#call-to-action::after,#call-to-action::before{
+  content:"";
+  position: absolute;
+  top:50%;
+  left:50%;
+  height:110%;
+  width:110%;
+  z-index:2;
+  transform:translate(-50%, -50%);
+  border-radius:50%;
+  border: 3px var(--red) solid;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+}
+#call-to-action::after{
+  animation-name: buzz;
+}
+#call-to-action::before{
+  animation-name: buzz2;
+}
+#cookie-notice{
+  animation-name:flipIn;
+  animation-duration:3s;
+  animation-iteration-count: 1;
+  position: fixed;
+  color:black;
+  background-color:#111;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:70%;
+  max-width:320px;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  padding-bottom:32px;
+  box-shadow: -1px -1px 8px white;
+}
+#cookie-notice p{
+  font-size:18px;
+  text-align:center;
+  padding:8px 16px;
+  line-height:20px;
+}
+#cookie-notice p:first-letter{
+  font-size:18px;
+  font-family:VacerStandard, sans-serif;
+}
+#cookie-notice button{
+  margin-top:8px;
+}
+#hero-image{
+  animation-name:fadeIn;
+  animation-duration: 1.2s;
+  animation-iteration-count: 1;
+}
 .main-text{
   padding: 16px;
+  position: relative;
 }
 .main-text img{
   margin-bottom:16px;
@@ -510,10 +602,6 @@ img{
     background-color:var(--blackMain);
     padding: 16px 0;
   }
-  #branding-pc a img{
-
-
-  }
   #hero-image{
     padding:48px 180px 16px 180px;
   }
@@ -527,6 +615,9 @@ img{
   .main-text img{
     max-width: 50%;
     margin-right: 16px;
+  }
+  #call-to-action img{
+    margin-right:0;
   }
   .main-text .news-item-img img{
     max-width:100%;
@@ -552,7 +643,7 @@ img{
     height: 100%;
     width: 100%;
     position: fixed;
-    background-image:url(../img/background/bg1920-blur1.jpg);
+    background-image:url(../img/large/background2.jpg);
   }
   #bg-opaque{
     height: 100%;
@@ -560,5 +651,64 @@ img{
     position: fixed;
     background-color: var(--blackMain);
     opacity: .5;
+  }
+}
+@keyframes buzz{
+  0%{
+    width:90%;
+    height:90%;
+    opacity:1;
+  }
+  50%{
+    width:130%;
+    height:130%;
+    opacity:1;
+  }
+  80%{
+    width:155%;
+    height:155%;
+    opacity:0;
+  }
+  100%{
+    opacity:0;
+  }
+}
+@keyframes buzz2{
+  0%{
+    width:80%;
+    height:80%;
+    opacity:1;
+  }
+  50%{
+    width:110%;
+    height:110%;
+    opacity:1;
+  }
+  80%{
+    width:130%;
+    height:130%;
+    opacity:0;
+  }
+  100%{
+    opacity:0;
+  }
+}
+@keyframes flipIn {
+  0%{
+    transform:rotateX(-180deg) translate(-50%, 350%);
+  }
+  60%{
+    transform:rotateX(-180deg) translate(-50%, 350%);
+  }
+  100%{
+    transform:rotateX(0deg) translate(-50%, -50%);
+  }
+}
+@keyframes fadeIn{
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
   }
 }

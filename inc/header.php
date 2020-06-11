@@ -1,4 +1,4 @@
-<?php include_once 'globals.php';?>
+<?php include_once 'database/globals.php';?>
 <?php
   //check constant
   if (!defined('CAN_OPEN')){
@@ -19,12 +19,17 @@
   <link rel="icon" href="<?php echo $document_root_path;?>img/original/icon.jpg">
 </head>
 <body>
+  <div id="cookie-notice">
+    <h2>Oye!</h2>
+    <p>This site uses cookies for a better user experience. We do not sell your information. By continuing to use this site, you are consenting to this.</p>
+    <button class="btn btn-red">OK</button>
+  </div>
   <div id="bg"></div>
   <div id="bg-opaque"></div>
   <div id="page">
     <header>
       <div id="branding-mobile">
-        <a href="index.php">
+        <a href="<?php echo $document_root_path;?>">
           <img src="<?php echo $document_root_path;?>img/logo/newlogocropped.jpg" alt="Los Tacos Diablos">
         </a>
       </div>
@@ -93,6 +98,12 @@
         <img src="<?php echo $page_hero_image;?>" alt="">
       </div>
       <div class="main-text">
+        <a href="https://postmates.com">
+          <div id="call-to-action">
+            <!--<i class="fas fa-phone"></i>-->
+            <img src="<?php echo $document_root_path;?>img/logo/postmatessmall.png" alt="ORDER">
+          </div>
+        </a>
         <div class="page-header">
           <h1><?php echo $page_header;?></h1>
         </div>
