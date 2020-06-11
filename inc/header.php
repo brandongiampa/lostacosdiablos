@@ -52,10 +52,10 @@
       <nav id="nav-header-pc">
         <ul class="nav-header-ul-pc" id="nav-header-pc-left">
           <li>
-            <a href="<?php echo $document_root_path;?>our-story">Our Story</a>
+            <a href="<?php echo $document_root_path;?>our-story/">Our Story</a>
           </li>
           <li>
-            <a href="<?php echo $document_root_path;?>news">News</a>
+            <a href="<?php echo $document_root_path;?>news/">News</a>
           </li>
         </ul>
         <div id="branding-pc">
@@ -65,10 +65,10 @@
         </div>
         <ul class="nav-header-ul-pc" id="nav-header-pc-right">
           <li>
-            <a href="<?php echo $document_root_path;?>menu.php">Menu</a>
+            <a href="<?php echo $document_root_path;?>menu/">Menu</a>
           </li>
           <li>
-            <a href="<?php echo $document_root_path;?>find-us.php">Find Us</a>
+            <a href="<?php echo $document_root_path;?>find-us/">Find Us</a>
           </li>
         </ul>
       </nav>
@@ -79,16 +79,16 @@
           <a href="<?php echo $document_root_path;?>">Home</a>
         </li>
         <li>
-          <a href="<?php echo $document_root_path;?>our-story">Our Story</a>
+          <a href="<?php echo $document_root_path;?>our-story/">Our Story</a>
         </li>
         <li>
-          <a href="<?php echo $document_root_path;?>news">News</a>
+          <a href="<?php echo $document_root_path;?>news/">News</a>
         </li>
         <li>
-          <a href="<?php echo $document_root_path;?>menu">Menu</a>
+          <a href="<?php echo $document_root_path;?>menu/">Menu</a>
         </li>
         <li>
-          <a href="<?php echo $document_root_path;?>find-us">Find Us</a>
+          <a href="<?php echo $document_root_path;?>find-us/">Find Us</a>
         </li>
       </ul>
     </nav>
